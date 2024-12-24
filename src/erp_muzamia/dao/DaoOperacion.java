@@ -15,12 +15,12 @@ public interface DaoOperacion {
     
     public Integer registrarOperacion (Operacion operacion);
     
-    public List<Object[]> listarOperaciones();
+    public List<Object[]> listarOperaciones(int arr_tope[]);
     
     public List<Object[]> listarOperaciones(String fecIni, String fecFin);
     
-    public Object[] getOperacion1 (int idOperacion);
+    public Object[] get_Operacion_1 (int idOperacion);
     
-    public Object[] getOperacion2_4 (int idOperacion);
+    public Object[] get_Operacion_2 (int idOperacion);
     
 }

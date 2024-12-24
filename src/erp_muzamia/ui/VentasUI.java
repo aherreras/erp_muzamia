@@ -63,6 +63,7 @@ public class VentasUI extends javax.swing.JFrame {
         listarColumnasTabla();
         listarCategorias();
         listarEstilistas();
+        inicializarDatos();
         cargarDatos(idVenta);
     }
 
@@ -105,9 +106,9 @@ public class VentasUI extends javax.swing.JFrame {
 
     public void cargarDatos(int idVenta) {
         DaoOperacion daoOperacion = new DaoOperacionImpl();
-        Object[] obj = daoOperacion.getOperacion2_4(idVenta);
+        Object[] obj = daoOperacion.get_Operacion_2(idVenta);
 
-        int met_pag = Integer.parseInt(obj[3].toString());
+        int met_pag = Integer.parseInt(obj[0].toString());
 
         switch (met_pag) {
             case 1:
@@ -130,7 +131,36 @@ public class VentasUI extends javax.swing.JFrame {
                 break;
         }
 
-//        jdcFechaOpe.setDate(obj[17]);
+        jtfClieID.setText(obj[1].toString());
+        jtfNomClie.setText(obj[2].toString());
+        jtfApeClie.setText(obj[3].toString());
+        jtfDNI.setText(obj[4].toString());
+
+        if (obj[5] == obj[6]) {
+            jrbPagoTotal.setSelected(true);
+            jtfPagoTotal.setText(obj[5].toString());
+        } else {
+            jrbPagoParcial.setSelected(true);
+            jtfPagoParcial.setText(obj[6].toString());
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = sdf.parse(obj[7].toString());
+            jdcFechaOpe.setDate(date);
+        } catch (Exception e) {
+
+        }
+
+        DaoDetOperacion daoDetOperacion = new DaoDetOperacionImpl();
+        List<Object[]> list = daoDetOperacion.get_DetOperacion_2(idVenta);
+        DefaultTableModel model = (DefaultTableModel) jtVentas.getModel();
+        model.setRowCount(0);
+
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
     }
 
     public void listarColumnasTabla() {
@@ -1027,7 +1057,7 @@ public class VentasUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, message, "Alerta", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
+
         if (accion == 0) {
             addDetalle();
         } else if (accion == 1) {

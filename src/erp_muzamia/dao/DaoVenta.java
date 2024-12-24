@@ -4,19 +4,15 @@
  */
 package erp_muzamia.dao;
 
+import erp_muzamia.dto.DetOperacionVenta;
 import java.util.List;
-import erp_muzamia.dto.DetOperacion;
 
 /**
  *
  * @author User
  */
-public interface DaoDetOperacion {
+public interface DaoVenta {
     
-    public String registrarDetOperacion (DetOperacion detOperacion);
-    
-    public List<DetOperacion> get_DetOperacion (int idOperacion);
-    
-    public List<Object[]> get_DetOperacion_2 (int idOperacion);
+    public List<DetOperacionVenta> getDetalle (int idOperacion);
     
 }

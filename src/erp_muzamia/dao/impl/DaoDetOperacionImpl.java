@@ -90,7 +90,7 @@ public class DaoDetOperacionImpl implements DaoDetOperacion {
     }
 
     @Override
-    public List<DetOperacion> getDetOperacion(int id) {
+    public List<DetOperacion> get_DetOperacion(int id) {
         List<DetOperacion> list = null;
         DetOperacion det = null;
         sql.append("SELECT ")
@@ -137,4 +137,69 @@ public class DaoDetOperacionImpl implements DaoDetOperacion {
         return list;
     }
 
+    @Override
+    public List<Object[]> get_DetOperacion_2(int id) {
+        List<Object[]> list = null;
+        Object[] obj = null;
+        int num = 1;
+        sql.append("SELECT ")
+                .append("d.serv_id,")
+                .append("s.serv_nombre,")
+                .append("cate_id,")
+                .append("s.cate_descripcion,")
+                .append("d.user_id,")
+                .append("user_nombres,")
+                .append("user_apellidos,")
+                .append("dope_precio,")
+                .append("dope_cantidad,")
+                .append("dope_subtotal,")
+                .append("dope_descuento,")
+                .append("dope_total ")
+                .append("FROM DET_OPERACION d ")
+                .append("LEFT JOIN (SELECT serv_id,")
+                .append("serv_nombre,")
+                .append("s.cate_id,")
+                .append("cate_descripcion ")
+                .append("FROM SERVICIOS s ")
+                .append("INNER JOIN CATEGORIAS c ")
+                .append("ON s.cate_id = c.cate_id ")
+                .append("WHERE cate_estado = 1) s ")
+                .append("ON d.serv_id = s.serv_id ")
+                .append("LEFT JOIN USUARIOS u ")
+                .append("ON d.user_id = u.user_id ")
+                .append("WHERE oper_id = ?");
+
+        try ( Connection cn = db.getConnection();  PreparedStatement ps = cn.prepareStatement(sql.toString())) {
+            list = new LinkedList<>();
+
+            ps.setInt(1, id);
+
+            try ( ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    obj = new Object[12];
+                    
+                    obj[0] = num;
+                    obj[1] = rs.getInt(1);
+                    obj[2] = rs.getString(2);
+                    obj[3] = rs.getInt(3);
+                    obj[4] = rs.getString(4);
+                    obj[5] = rs.getInt(5);
+                    obj[6] = rs.getString(6) + " " + rs.getString(7);
+                    obj[7] = rs.getDouble(8);
+                    obj[8] = rs.getInt(9);
+                    obj[9] = rs.getDouble(10);
+                    obj[10] = rs.getDouble(11);
+                    obj[11] = rs.getDouble(12);
+
+                    list.add(obj);
+                    num++;
+                }
+            }
+
+        } catch (SQLException e) {
+            message = e.getMessage();
+        }
+
+        return list;
+    }
 }

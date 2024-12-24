@@ -46,7 +46,8 @@ public class ReporteVentas extends javax.swing.JInternalFrame {
 
     public void listarVentas() {
         DaoOperacion daoOperacion = new DaoOperacionImpl();
-        List<Object[]> list = daoOperacion.listarOperaciones();
+        int arr_tope[] = {1,5};
+        List<Object[]> list = daoOperacion.listarOperaciones(arr_tope);
         DefaultTableModel model = (DefaultTableModel) jtVentas.getModel();
         model.setRowCount(0);
 
