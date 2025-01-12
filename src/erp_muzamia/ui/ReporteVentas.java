@@ -6,16 +6,13 @@ package erp_muzamia.ui;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import erp_muzamia.dao.DaoFacturas;
 import erp_muzamia.dao.DaoOperacion;
 //import erp_muzamia.dao.DaoMetPago;
 import erp_muzamia.dao.DaoUsuarios;
-import erp_muzamia.dao.impl.DaoFacturasImpl;
 import erp_muzamia.dao.impl.DaoOperacionImpl;
 //import erp_muzamia.dao.impl.DaoMetPagoImpl;
 import erp_muzamia.dao.impl.DaoUsuariosImpl;
-import erp_muzamia.dto.Facturas;
-import erp_muzamia.dto.Operacion;
+import erp_muzamia.dto.Operaciones;
 //import erp_muzamia.dto.Metodo_pago;
 import erp_muzamia.dto.Usuarios;
 import java.awt.Color;
@@ -47,42 +44,42 @@ public class ReporteVentas extends javax.swing.JInternalFrame {
     public void listarVentas() {
         DaoOperacion daoOperacion = new DaoOperacionImpl();
         int arr_tope[] = {1,5};
-        List<Object[]> list = daoOperacion.listarOperaciones(arr_tope);
+//        List<Object[]> list = daoOperacion.listarOperaciones(arr_tope);
         DefaultTableModel model = (DefaultTableModel) jtVentas.getModel();
         model.setRowCount(0);
 
         Object[] row;
         int idTope = 0;
 
-        for (int i = 0; i < list.size(); i++) {
-            row = new Object[17];
-            row = list.get(i);
-            model.addRow(row);
-        };
+//        for (int i = 0; i < list.size(); i++) {
+//            row = new Object[17];
+//            row = list.get(i);
+//            model.addRow(row);
+//        };
 
-        jlCnt.setText("" + list.size());
+//        jlCnt.setText("" + list.size());
     }
 
     public void listarVentas(String fecIni, String fecFin) {
         DaoOperacion daoOperacion = new DaoOperacionImpl();
-        List<Object[]> list = daoOperacion.listarOperaciones(fecIni, fecFin);
+//        List<Object[]> list = daoOperacion.listarOperaciones(fecIni, fecFin);
         DefaultTableModel model = (DefaultTableModel) jtVentas.getModel();
         model.setRowCount(0);
 
         Object[] row;
 
-        for (int i = 0; i < list.size(); i++) {
-            row = new Object[17];
-            row = list.get(i);
-            model.addRow(row);
-        };
-
-        jlCnt.setText("" + list.size());
+//        for (int i = 0; i < list.size(); i++) {
+//            row = new Object[17];
+//            row = list.get(i);
+//            model.addRow(row);
+//        };
+//
+//        jlCnt.setText("" + list.size());
     }
 
     public void listarTotxEst() {
         DaoUsuarios daoUsuarios = new DaoUsuariosImpl();
-        List<Usuarios> list = daoUsuarios.listarUsuarios();
+        List<Usuarios> list = daoUsuarios.lst_Usuarios_2();
         Double[] user = new Double[list.size()];
 
         for (int i = 0; i < list.size(); i++) {

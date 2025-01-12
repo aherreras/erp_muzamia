@@ -6,19 +6,16 @@ package erp_muzamia.ui;
 
 import erp_muzamia.dao.DaoOperacion;
 import erp_muzamia.dao.impl.DaoOperacionImpl;
-import erp_muzamia.dao.DaoCaja;
-import erp_muzamia.dao.DaoMetodoPago;
-import erp_muzamia.dao.DaoTipoOperacion;
 import erp_muzamia.dao.DaoVenta;
-import erp_muzamia.dao.impl.DaoCajaImpl;
-import erp_muzamia.dao.impl.DaoMetodoPagoImpl;
-import erp_muzamia.dao.impl.DaoTipoOperacionImpl;
+import erp_muzamia.dao.impl.DaoPeriodosImpl;
+import erp_muzamia.dao.impl.DaoFormasPagoImpl;
+import erp_muzamia.dao.impl.DaoTiposOperacionImpl;
 import erp_muzamia.dao.impl.DaoVentaImpl;
-import erp_muzamia.dto.Caja;
-import erp_muzamia.dto.DetOperacionVenta;
-import erp_muzamia.dto.MetodoPago;
-import erp_muzamia.dto.TipoOperacion;
-import erp_muzamia.dto.DetVenta;
+import erp_muzamia.dto.Periodos;
+import erp_muzamia.dto.DetOperacion;
+import erp_muzamia.dto.FormasPago;
+import erp_muzamia.dto.TiposOperacion;
+import erp_muzamia.dto.Venta;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
@@ -29,6 +26,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import erp_muzamia.dao.DaoPeriodos;
+import erp_muzamia.dao.DaoTiposOperacion;
+import erp_muzamia.dao.DaoFormasPago;
 
 /**
  *
@@ -45,11 +45,11 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
 //        double with = screenSize.getWidth();
 //        double height = screenSize.getHeight();
 //        this.setBounds(0, 0, (int) with * 2 / 3, (int) height);
-        try {
-            this.setMaximum(true);
-        } catch (Exception e) {
-
-        }
+//        try {
+//            this.setMaximum(true);
+//        } catch (Exception e) {
+//
+//        }
         listarColumnasTabla();
         listarVentas();
         listarCajas();
@@ -62,20 +62,20 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
     Object[][] obj_tip_operacion;
 
     public void listarColumnasTabla() {
-        jtVentas.getColumnModel().getColumn(0).setMaxWidth(65);
-        jtVentas.getColumnModel().getColumn(0).setMinWidth(65);
-        jtVentas.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(65);
-        jtVentas.getTableHeader().getColumnModel().getColumn(0).setMinWidth(65);
+        jtVentas.getColumnModel().getColumn(0).setMaxWidth(50);
+        jtVentas.getColumnModel().getColumn(0).setMinWidth(50);
+        jtVentas.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(50);
+        jtVentas.getTableHeader().getColumnModel().getColumn(0).setMinWidth(50);
 
         jtVentas.getColumnModel().getColumn(1).setMaxWidth(0);
         jtVentas.getColumnModel().getColumn(1).setMinWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
 
-        jtVentas.getColumnModel().getColumn(2).setMaxWidth(110);
-        jtVentas.getColumnModel().getColumn(2).setMinWidth(110);
-        jtVentas.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(110);
-        jtVentas.getTableHeader().getColumnModel().getColumn(2).setMinWidth(110);
+        jtVentas.getColumnModel().getColumn(2).setMaxWidth(80);
+        jtVentas.getColumnModel().getColumn(2).setMinWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(2).setMinWidth(80);
 
         jtVentas.getColumnModel().getColumn(3).setMaxWidth(0);
         jtVentas.getColumnModel().getColumn(3).setMinWidth(0);
@@ -92,55 +92,85 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
         jtVentas.getTableHeader().getColumnModel().getColumn(5).setMaxWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(5).setMinWidth(0);
 
-        jtVentas.getColumnModel().getColumn(6).setMaxWidth(150);
-        jtVentas.getColumnModel().getColumn(6).setMinWidth(150);
-        jtVentas.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(150);
-        jtVentas.getTableHeader().getColumnModel().getColumn(6).setMinWidth(150);
+        jtVentas.getColumnModel().getColumn(6).setMaxWidth(90);
+        jtVentas.getColumnModel().getColumn(6).setMinWidth(90);
+        jtVentas.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(90);
+        jtVentas.getTableHeader().getColumnModel().getColumn(6).setMinWidth(90);
 
-        jtVentas.getColumnModel().getColumn(7).setMaxWidth(0);
-        jtVentas.getColumnModel().getColumn(7).setMinWidth(0);
-        jtVentas.getTableHeader().getColumnModel().getColumn(7).setMaxWidth(0);
-        jtVentas.getTableHeader().getColumnModel().getColumn(7).setMinWidth(0);
+        jtVentas.getColumnModel().getColumn(7).setMaxWidth(50);
+        jtVentas.getColumnModel().getColumn(7).setMinWidth(50);
+        jtVentas.getTableHeader().getColumnModel().getColumn(7).setMaxWidth(50);
+        jtVentas.getTableHeader().getColumnModel().getColumn(7).setMinWidth(50);
 
-        jtVentas.getColumnModel().getColumn(8).setMaxWidth(0);
-        jtVentas.getColumnModel().getColumn(8).setMinWidth(0);
-        jtVentas.getTableHeader().getColumnModel().getColumn(8).setMaxWidth(0);
-        jtVentas.getTableHeader().getColumnModel().getColumn(8).setMinWidth(0);
+        jtVentas.getColumnModel().getColumn(8).setMaxWidth(50);
+        jtVentas.getColumnModel().getColumn(8).setMinWidth(50);
+        jtVentas.getTableHeader().getColumnModel().getColumn(8).setMaxWidth(50);
+        jtVentas.getTableHeader().getColumnModel().getColumn(8).setMinWidth(50);
 
         jtVentas.getColumnModel().getColumn(9).setMaxWidth(0);
         jtVentas.getColumnModel().getColumn(9).setMinWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(9).setMaxWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(9).setMinWidth(0);
 
-        jtVentas.getColumnModel().getColumn(10).setMaxWidth(80);
-        jtVentas.getColumnModel().getColumn(10).setMinWidth(80);
-        jtVentas.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(80);
-        jtVentas.getTableHeader().getColumnModel().getColumn(10).setMinWidth(80);
+        jtVentas.getColumnModel().getColumn(10).setMaxWidth(100);
+        jtVentas.getColumnModel().getColumn(10).setMinWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(10).setMinWidth(100);
 
         jtVentas.getColumnModel().getColumn(11).setMaxWidth(0);
         jtVentas.getColumnModel().getColumn(11).setMinWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(11).setMaxWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(11).setMinWidth(0);
 
-        jtVentas.getColumnModel().getColumn(12).setMaxWidth(80);
-        jtVentas.getColumnModel().getColumn(12).setMinWidth(80);
-        jtVentas.getTableHeader().getColumnModel().getColumn(12).setMaxWidth(80);
-        jtVentas.getTableHeader().getColumnModel().getColumn(12).setMinWidth(80);
+        jtVentas.getColumnModel().getColumn(12).setMaxWidth(100);
+        jtVentas.getColumnModel().getColumn(12).setMinWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(12).setMaxWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(12).setMinWidth(100);
 
         jtVentas.getColumnModel().getColumn(13).setMaxWidth(0);
         jtVentas.getColumnModel().getColumn(13).setMinWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(13).setMaxWidth(0);
         jtVentas.getTableHeader().getColumnModel().getColumn(13).setMinWidth(0);
 
-        jtVentas.getColumnModel().getColumn(14).setMaxWidth(80);
-        jtVentas.getColumnModel().getColumn(14).setMinWidth(80);
-        jtVentas.getTableHeader().getColumnModel().getColumn(14).setMaxWidth(80);
-        jtVentas.getTableHeader().getColumnModel().getColumn(14).setMinWidth(80);
+        jtVentas.getColumnModel().getColumn(14).setMaxWidth(100);
+        jtVentas.getColumnModel().getColumn(14).setMinWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(14).setMaxWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(14).setMinWidth(100);
 
-        jtVentas.getColumnModel().getColumn(15).setMaxWidth(100);
-        jtVentas.getColumnModel().getColumn(15).setMinWidth(100);
-        jtVentas.getTableHeader().getColumnModel().getColumn(15).setMaxWidth(100);
-        jtVentas.getTableHeader().getColumnModel().getColumn(15).setMinWidth(100);
+        jtVentas.getColumnModel().getColumn(15).setMaxWidth(80);
+        jtVentas.getColumnModel().getColumn(15).setMinWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(15).setMaxWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(15).setMinWidth(80);
+
+        jtVentas.getColumnModel().getColumn(16).setMaxWidth(80);
+        jtVentas.getColumnModel().getColumn(16).setMinWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(16).setMaxWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(16).setMinWidth(80);
+
+        jtVentas.getColumnModel().getColumn(17).setMaxWidth(80);
+        jtVentas.getColumnModel().getColumn(17).setMinWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(17).setMaxWidth(80);
+        jtVentas.getTableHeader().getColumnModel().getColumn(17).setMinWidth(80);
+
+        jtVentas.getColumnModel().getColumn(18).setMaxWidth(100);
+        jtVentas.getColumnModel().getColumn(18).setMinWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(18).setMaxWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(18).setMinWidth(100);
+
+        jtVentas.getColumnModel().getColumn(19).setMaxWidth(0);
+        jtVentas.getColumnModel().getColumn(19).setMinWidth(0);
+        jtVentas.getTableHeader().getColumnModel().getColumn(19).setMaxWidth(0);
+        jtVentas.getTableHeader().getColumnModel().getColumn(19).setMinWidth(0);
+
+        jtVentas.getColumnModel().getColumn(20).setMaxWidth(100);
+        jtVentas.getColumnModel().getColumn(20).setMinWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(20).setMaxWidth(100);
+        jtVentas.getTableHeader().getColumnModel().getColumn(20).setMinWidth(100);
+
+        jtVentas.getColumnModel().getColumn(21).setMaxWidth(180);
+        jtVentas.getColumnModel().getColumn(21).setMinWidth(180);
+        jtVentas.getTableHeader().getColumnModel().getColumn(21).setMaxWidth(180);
+        jtVentas.getTableHeader().getColumnModel().getColumn(21).setMinWidth(180);
 
         TableActionEvent event = new TableActionEvent() {
             @Override
@@ -148,7 +178,7 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
                 if (jtVentas.isEditing()) {
                     jtVentas.getCellEditor().stopCellEditing();
                 }
-                
+
                 int idVenta = Integer.parseInt(jtVentas.getModel().getValueAt(row, 0).toString());
                 VentasUI ventasUI = new VentasUI(idVenta);
                 ventasUI.pack();
@@ -180,7 +210,7 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
                 int idVenta = Integer.parseInt(jtVentas.getModel().getValueAt(row, 0).toString());
 
                 DaoVenta daoVenta = new DaoVentaImpl();
-                List<DetOperacionVenta> list = daoVenta.getDetalle(idVenta);
+                List<DetOperacion> list = daoVenta.getDetalle(idVenta);
 
                 showDetalle(list);
                 return;
@@ -188,45 +218,45 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
         };
 
         jtVentas.getColumnModel()
-                .getColumn(16).setCellRenderer(new TableActionCellRender());
+                .getColumn(22).setCellRenderer(new TableActionCellRender());
         jtVentas.getColumnModel()
-                .getColumn(16).setCellEditor(new TableActionCellEditor(event));
+                .getColumn(22).setCellEditor(new TableActionCellEditor(event));
 
-        jtVentas.getColumnModel().getColumn(16).setMaxWidth(200);
-        jtVentas.getColumnModel().getColumn(16).setMinWidth(200);
-        jtVentas.getTableHeader().getColumnModel().getColumn(16).setMaxWidth(200);
-        jtVentas.getTableHeader().getColumnModel().getColumn(16).setMinWidth(200);
+        jtVentas.getColumnModel().getColumn(22).setMaxWidth(200);
+        jtVentas.getColumnModel().getColumn(22).setMinWidth(200);
+        jtVentas.getTableHeader().getColumnModel().getColumn(22).setMaxWidth(200);
+        jtVentas.getTableHeader().getColumnModel().getColumn(22).setMinWidth(200);
     }
 
     public void listarCajas() {
-        DaoCaja daoCaja = new DaoCajaImpl();
-        List<Caja> list = daoCaja.lstCajas_2();
+        DaoPeriodos daoPeriodo = new DaoPeriodosImpl();
+        List<Periodos> list = daoPeriodo.lst_Periodos_2();
 
         obj_caja = new Integer[list.size()][2];
 
         for (int i = 0; i < list.size(); i++) {
-            jcbCaja.addItem(list.get(i).getCaja_descripcion());
+            jcbCaja.addItem(list.get(i).getPeri_descripcion());
             obj_caja[i][0] = i;
-            obj_caja[i][1] = list.get(i).getCaja_id();
+            obj_caja[i][1] = list.get(i).getPeri_id();
         };
     }
 
     public void listarMetodosDePago() {
-        DaoMetodoPago daoMetodoPago = new DaoMetodoPagoImpl();
-        List<MetodoPago> list = daoMetodoPago.lstMetodosPago_2();
+        DaoFormasPago daoMetodoPago = new DaoFormasPagoImpl();
+        List<FormasPago> list = daoMetodoPago.lst_FormasPago_2();
 
         obj_met_pago = new Integer[list.size()][2];
 
         for (int i = 0; i < list.size(); i++) {
-            jcbMetodoPago.addItem(list.get(i).getMpag_descripcion());
+            jcbMetodoPago.addItem(list.get(i).getFpag_descripcion());
             obj_met_pago[i][0] = i;
-            obj_met_pago[i][1] = list.get(i).getMpag_id();
+            obj_met_pago[i][1] = list.get(i).getFpag_id();
         };
     }
 
     public void listarTiposOperacion() {
-        DaoTipoOperacion daoTipoOperacion = new DaoTipoOperacionImpl();
-        List<TipoOperacion> list = daoTipoOperacion.lstTiposOperacion_2();
+        DaoTiposOperacion daoTipoOperacion = new DaoTiposOperacionImpl();
+        List<TiposOperacion> list = daoTipoOperacion.lst_TiposOperacion_2();
 
         obj_tip_operacion = new Integer[list.size()][2];
 
@@ -239,16 +269,14 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
 
     public void listarVentas() {
         DaoOperacion daoOperacion = new DaoOperacionImpl();
-        int arr_tope[] = {1,5};
-        List<Object[]> list = daoOperacion.listarOperaciones(arr_tope);
+        List<Object[]> list = daoOperacion.lst_Operaciones_1_1();
         DefaultTableModel model = (DefaultTableModel) jtVentas.getModel();
         model.setRowCount(0);
 
         Object[] row;
-        int idTope = 0;
 
         for (int i = 0; i < list.size(); i++) {
-            row = new Object[16];
+            row = new Object[22];
             row = list.get(i);
             model.addRow(row);
         };
@@ -256,57 +284,62 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
 
     public void listarVentas(String fecIni, String fecFin) {
         DaoOperacion daoOperacion = new DaoOperacionImpl();
-        List<Object[]> list = daoOperacion.listarOperaciones(fecIni, fecFin);
+//        List<Object[]> list = daoOperacion.listarOperaciones(fecIni, fecFin);
         DefaultTableModel model = (DefaultTableModel) jtVentas.getModel();
         model.setRowCount(0);
 
         Object[] row;
 
-        for (int i = 0; i < list.size(); i++) {
-            row = new Object[16];
-            row = list.get(i);
-            model.addRow(row);
-        };
+//        for (int i = 0; i < list.size(); i++) {
+//            row = new Object[16];
+//            row = list.get(i);
+//            model.addRow(row);
+//        };
     }
 
-    public void showDetalle(List<DetOperacionVenta> list) {
+    public void showDetalle(List<DetOperacion> list) {
         JDialog jDialog = new javax.swing.JDialog();
         jDialog.setAlwaysOnTop(true);
         jDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialog.setLocationRelativeTo(null);
 
-        Object[] columnNames = {"ID", "oper_id", "user_id", "Nombre Est.", "Apellido Est.", "serv_id", "Servicio", "Precio", "Cant.", "Sub Total", "Dscto.", "Total", "Utl. Modif."};
-        Object[][] data = new Object[list.size()][13];
+        Object[] columnNames = {"ID", "oper_id", "user_id", "Nombre Est.", "Apellido Est.", "serv_id", "Servicio", "prod_id", "Producto", "Precio", "Cant.", "Sub Total", "Dscto.", "Total", "esta_id", "Estado"};
+        Object[][] data = new Object[list.size()][16];
 
         String p = "";
         int i = 0;
 
-        for (DetOperacionVenta dov : list) {
-            data[i][0] = dov.getDope_id();
+        for (DetOperacion dov : list) {
+            data[i][0] = i + 1;
             data[i][1] = dov.getOper_id();
             data[i][2] = dov.getUser_id();
-            if (dov instanceof DetVenta dv) {
+            if (dov instanceof Venta dv) {
                 data[i][3] = dv.getUser_nombres();
                 data[i][4] = dv.getUser_apellidos();
                 data[i][6] = dv.getServ_nombre();
+                data[i][8] = dv.getProd_nombre();
+                data[i][8] = dv.getProd_nombre();
+                data[i][15] = dv.getEsta_descripcion();
             }
             data[i][5] = dov.getServ_id();
-            data[i][7] = dov.getDope_precio();
-            data[i][8] = dov.getDope_cantidad();
-            data[i][9] = dov.getDope_subtotal();
-            data[i][10] = dov.getDope_descuento();
-            data[i][11] = dov.getDope_total();
-            data[i][12] = dov.getDope_timestamp();
+            data[i][7] = dov.getProd_id();
+            data[i][9] = dov.getDope_precio();
+            data[i][10] = dov.getDope_cantidad();
+            data[i][11] = dov.getDope_subtotal();
+            data[i][12] = dov.getDope_descuento();
+            data[i][13] = dov.getDope_total();
+            data[i][14] = dov.getEsta_id();
             i++;
         }
 
         JTable table = new javax.swing.JTable(data, columnNames);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table.setRowHeight(40);
 
-        table.getColumnModel().getColumn(0).setMaxWidth(60);
-        table.getColumnModel().getColumn(0).setMinWidth(60);
-        table.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(60);
-        table.getTableHeader().getColumnModel().getColumn(0).setMinWidth(60);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(50);
+        table.getTableHeader().getColumnModel().getColumn(0).setMinWidth(50);
 
         table.getColumnModel().getColumn(1).setMaxWidth(0);
         table.getColumnModel().getColumn(1).setMinWidth(0);
@@ -318,55 +351,70 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
         table.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(2).setMinWidth(0);
 
-        table.getColumnModel().getColumn(3).setMaxWidth(150);
-        table.getColumnModel().getColumn(3).setMinWidth(150);
-        table.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(150);
-        table.getTableHeader().getColumnModel().getColumn(3).setMinWidth(150);
+        table.getColumnModel().getColumn(3).setMaxWidth(120);
+        table.getColumnModel().getColumn(3).setMinWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(3).setMinWidth(120);
 
-        table.getColumnModel().getColumn(4).setMaxWidth(150);
-        table.getColumnModel().getColumn(4).setMinWidth(150);
-        table.getTableHeader().getColumnModel().getColumn(4).setMaxWidth(150);
-        table.getTableHeader().getColumnModel().getColumn(4).setMinWidth(150);
+        table.getColumnModel().getColumn(4).setMaxWidth(120);
+        table.getColumnModel().getColumn(4).setMinWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(4).setMaxWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(4).setMinWidth(120);
 
         table.getColumnModel().getColumn(5).setMaxWidth(0);
         table.getColumnModel().getColumn(5).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(5).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(5).setMinWidth(0);
 
-        table.getColumnModel().getColumn(6).setMaxWidth(150);
-        table.getColumnModel().getColumn(6).setMinWidth(150);
-        table.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(150);
-        table.getTableHeader().getColumnModel().getColumn(6).setMinWidth(150);
+        table.getColumnModel().getColumn(6).setMaxWidth(120);
+        table.getColumnModel().getColumn(6).setMinWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(6).setMinWidth(120);
 
-        table.getColumnModel().getColumn(7).setMaxWidth(100);
-        table.getColumnModel().getColumn(7).setMinWidth(100);
-        table.getTableHeader().getColumnModel().getColumn(7).setMaxWidth(100);
-        table.getTableHeader().getColumnModel().getColumn(7).setMinWidth(100);
+        table.getColumnModel().getColumn(7).setMaxWidth(0);
+        table.getColumnModel().getColumn(7).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(7).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(7).setMinWidth(0);
 
-        table.getColumnModel().getColumn(8).setMaxWidth(70);
-        table.getColumnModel().getColumn(8).setMinWidth(70);
-        table.getTableHeader().getColumnModel().getColumn(8).setMaxWidth(70);
-        table.getTableHeader().getColumnModel().getColumn(8).setMinWidth(70);
+        table.getColumnModel().getColumn(8).setMaxWidth(120);
+        table.getColumnModel().getColumn(8).setMinWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(8).setMaxWidth(120);
+        table.getTableHeader().getColumnModel().getColumn(8).setMinWidth(120);
 
         table.getColumnModel().getColumn(9).setMaxWidth(100);
         table.getColumnModel().getColumn(9).setMinWidth(100);
         table.getTableHeader().getColumnModel().getColumn(9).setMaxWidth(100);
         table.getTableHeader().getColumnModel().getColumn(9).setMinWidth(100);
 
-        table.getColumnModel().getColumn(10).setMaxWidth(100);
-        table.getColumnModel().getColumn(10).setMinWidth(100);
-        table.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(100);
-        table.getTableHeader().getColumnModel().getColumn(10).setMinWidth(100);
+        table.getColumnModel().getColumn(10).setMaxWidth(70);
+        table.getColumnModel().getColumn(10).setMinWidth(70);
+        table.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(70);
+        table.getTableHeader().getColumnModel().getColumn(10).setMinWidth(70);
 
         table.getColumnModel().getColumn(11).setMaxWidth(100);
         table.getColumnModel().getColumn(11).setMinWidth(100);
         table.getTableHeader().getColumnModel().getColumn(11).setMaxWidth(100);
         table.getTableHeader().getColumnModel().getColumn(11).setMinWidth(100);
 
-        table.getColumnModel().getColumn(12).setMaxWidth(200);
-        table.getColumnModel().getColumn(12).setMinWidth(200);
-        table.getTableHeader().getColumnModel().getColumn(12).setMaxWidth(200);
-        table.getTableHeader().getColumnModel().getColumn(12).setMinWidth(200);
+        table.getColumnModel().getColumn(12).setMaxWidth(100);
+        table.getColumnModel().getColumn(12).setMinWidth(100);
+        table.getTableHeader().getColumnModel().getColumn(12).setMaxWidth(100);
+        table.getTableHeader().getColumnModel().getColumn(12).setMinWidth(100);
+
+        table.getColumnModel().getColumn(13).setMaxWidth(100);
+        table.getColumnModel().getColumn(13).setMinWidth(100);
+        table.getTableHeader().getColumnModel().getColumn(13).setMaxWidth(100);
+        table.getTableHeader().getColumnModel().getColumn(13).setMinWidth(100);
+
+        table.getColumnModel().getColumn(14).setMaxWidth(0);
+        table.getColumnModel().getColumn(14).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(14).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(14).setMinWidth(0);
+
+        table.getColumnModel().getColumn(15).setMaxWidth(100);
+        table.getColumnModel().getColumn(15).setMinWidth(100);
+        table.getTableHeader().getColumnModel().getColumn(15).setMaxWidth(100);
+        table.getTableHeader().getColumnModel().getColumn(15).setMinWidth(100);
 
         int height = 0;
         if (list.size() <= 10) {
@@ -375,10 +423,10 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
             height = 10 * 40;
         }
         JScrollPane tableScrollPane = new javax.swing.JScrollPane(table);
-        tableScrollPane.setPreferredSize(new java.awt.Dimension(1040, height + 30));
+        tableScrollPane.setPreferredSize(new java.awt.Dimension(1008, height + 30));
 
         JPanel panel = new javax.swing.JPanel();
-        panel.setPreferredSize(new java.awt.Dimension(1140, height + 30));
+        panel.setPreferredSize(new java.awt.Dimension(1108, height + 30));
         panel.setLayout(new java.awt.BorderLayout());
         panel.add(tableScrollPane, java.awt.BorderLayout.NORTH);
 
@@ -414,7 +462,6 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
         jcbTipoOperacion = new javax.swing.JComboBox<>();
         jcbMetodoPago = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jbNuevaVenta = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jtfMayorQ = new javax.swing.JTextField();
@@ -431,25 +478,36 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
         jbRefresh = new javax.swing.JButton();
 
         setClosable(true);
-        setMaximizable(true);
+        setIconifiable(true);
         setTitle("VENTAS");
+
+        jScrollPane1.setAutoscrolls(true);
 
         jtVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Venta", "ID Oper.", "Tipo Operación", "ID Mét.", "Método de Pago", "ID Cli.", "Cliente", "ID Prov.", "Proveedor", "Última mod.", "Mnt. Oper.", "Mnt. Cobr.", "Mnt. Pag.", "Mnt. Vto.", "Saldo", "Fecha Oper.", ""
+                "ID", "tope_id", "Tipo Operación", "user_id", "Usuario", "tcom_id", "Tip. Compr.", "Gen.", "Impr.", "fpag_id", "Forma de Pago", "peri_id", "Periodo", "clie_id", "Cliente", "Mnt. Oper.", "Mnt. Pag.", "Saldo", "Fecha Oper.", "esta_id", "Estado", "Última mod.", ""
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jtVentas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jtVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtVentas.setRowHeight(40);
         jtVentas.setSelectionBackground(new java.awt.Color(57, 137, 97));
         jtVentas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -480,18 +538,6 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
         jLabel9.setText("Monto mayor que:");
         jLabel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel9.setEnabled(false);
-
-        jbNuevaVenta.setBackground(new java.awt.Color(153, 153, 255));
-        jbNuevaVenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jbNuevaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-add-shopping-cart-48.png"))); // NOI18N
-        jbNuevaVenta.setText("Nuevo");
-        jbNuevaVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbNuevaVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jbNuevaVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNuevaVentaActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Monto menor que:");
         jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -559,7 +605,7 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
@@ -569,7 +615,7 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
                     .addComponent(jcbMetodoPago, 0, 1, Short.MAX_VALUE)
                     .addComponent(jcbTipoOperacion, 0, 1, Short.MAX_VALUE)
                     .addComponent(jcbCaja, 0, 165, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -579,7 +625,7 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
                     .addComponent(jtfNomCliente)
                     .addComponent(jtfRazSocProv)
                     .addComponent(jdcInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -589,13 +635,11 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
                     .addComponent(jtfMayorQ, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                     .addComponent(jtfMenorQ, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                     .addComponent(jdcFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jbFiltro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbNuevaVenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbRefresh)
-                .addGap(23, 23, 23))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,7 +660,6 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jdcFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jbNuevaVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -657,7 +700,7 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -670,13 +713,6 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevaVentaActionPerformed
-        VentasUI ventaUI = new VentasUI();
-        ventaUI.pack();
-        ventaUI.setLocationRelativeTo(null);
-        ventaUI.setVisible(true);
-    }//GEN-LAST:event_jbNuevaVentaActionPerformed
 
     private void jbFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFiltroActionPerformed
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -716,7 +752,6 @@ public class LstVentasUI extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbFiltro;
-    private javax.swing.JButton jbNuevaVenta;
     private javax.swing.JButton jbRefresh;
     private javax.swing.JComboBox<String> jcbCaja;
     private javax.swing.JComboBox<String> jcbMetodoPago;

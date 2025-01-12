@@ -8,20 +8,27 @@ package erp_muzamia.dto;
  *
  * @author User
  */
-public class DetOperacion {
-
+public abstract class DetOperacion {
+        
     private Integer dope_id;
     private Integer oper_id;
     private Integer user_id;
     private Integer serv_id;
     private Integer prod_id;
-    private String dope_s_p;
+    private Integer prov_id;
+    private Integer acti_id;
+    private Integer pasi_id;
     private Double dope_precio;
     private Integer dope_cantidad;
     private Double dope_subtotal;
     private Double dope_descuento;
     private Double dope_total;
+    private Integer esta_id;
     private String dope_timestamp;
+
+    public DetOperacion(Integer oper_id) {
+        this.oper_id = oper_id;
+    }
 
     public Integer getDope_id() {
         return dope_id;
@@ -63,12 +70,28 @@ public class DetOperacion {
         this.prod_id = prod_id;
     }
 
-    public String getDope_s_p() {
-        return dope_s_p;
+    public Integer getProv_id() {
+        return prov_id;
     }
 
-    public void setDope_s_p(String dope_s_p) {
-        this.dope_s_p = dope_s_p;
+    public void setProv_id(Integer prov_id) {
+        this.prov_id = prov_id;
+    }
+
+    public Integer getActi_id() {
+        return acti_id;
+    }
+
+    public void setActi_id(Integer acti_id) {
+        this.acti_id = acti_id;
+    }
+
+    public Integer getPasi_id() {
+        return pasi_id;
+    }
+
+    public void setPasi_id(Integer pasi_id) {
+        this.pasi_id = pasi_id;
     }
 
     public Double getDope_precio() {
@@ -109,6 +132,14 @@ public class DetOperacion {
 
     public void setDope_total(Double dope_total) {
         this.dope_total = dope_total;
+    }
+
+    public Integer getEsta_id() {
+        return esta_id;
+    }
+
+    public void setEsta_id(Integer esta_id) {
+        this.esta_id = esta_id;
     }
 
     public String getDope_timestamp() {

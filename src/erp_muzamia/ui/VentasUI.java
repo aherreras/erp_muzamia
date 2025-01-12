@@ -6,20 +6,19 @@ package erp_muzamia.ui;
 
 import erp_muzamia.dao.DaoCategorias;
 import erp_muzamia.dao.DaoClientes;
-import erp_muzamia.dao.DaoDetOperacion;
 import erp_muzamia.dao.DaoOperacion;
 import erp_muzamia.dao.DaoServicios;
 import erp_muzamia.dao.DaoUsuarios;
 import erp_muzamia.dao.impl.DaoCategoriasImpl;
 import erp_muzamia.dao.impl.DaoClientesImpl;
-import erp_muzamia.dao.impl.DaoDetOperacionImpl;
+import erp_muzamia.dao.impl.DaoDetalleOperacionImpl;
 import erp_muzamia.dao.impl.DaoOperacionImpl;
 import erp_muzamia.dao.impl.DaoServiciosImpl;
 import erp_muzamia.dao.impl.DaoUsuariosImpl;
 import erp_muzamia.dto.Categorias;
 import erp_muzamia.dto.Clientes;
-import erp_muzamia.dto.DetOperacion;
-import erp_muzamia.dto.Operacion;
+import erp_muzamia.dto.DetalleOperacion;
+import erp_muzamia.dto.Operaciones;
 import erp_muzamia.dto.Servicios;
 import erp_muzamia.dto.Usuarios;
 import java.text.SimpleDateFormat;
@@ -36,6 +35,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import erp_muzamia.dao.DaoDetalleOperacion;
 
 /**
  *
@@ -106,55 +106,55 @@ public class VentasUI extends javax.swing.JFrame {
 
     public void cargarDatos(int idVenta) {
         DaoOperacion daoOperacion = new DaoOperacionImpl();
-        Object[] obj = daoOperacion.get_Operacion_2(idVenta);
+//        Object[] obj = daoOperacion.get_Operacion_2(idVenta);
 
-        int met_pag = Integer.parseInt(obj[0].toString());
+//        int met_pag = Integer.parseInt(obj[0].toString());
 
-        switch (met_pag) {
-            case 1:
-                jchkbEfectivo.setSelected(true);
-                break;
-            case 2:
-                jchkbConTarjeta.setSelected(true);
-                break;
-            case 3:
-                jchkbTransferencia.setSelected(true);
-                break;
-            case 4:
-                jchkbYape.setSelected(true);
-                break;
-            case 5:
-                jchkbPlin.setSelected(true);
-                break;
-            default:
-                buttonGroup1.clearSelection();
-                break;
-        }
+//        switch (met_pag) {
+//            case 1:
+//                jchkbEfectivo.setSelected(true);
+//                break;
+//            case 2:
+//                jchkbConTarjeta.setSelected(true);
+//                break;
+//            case 3:
+//                jchkbTransferencia.setSelected(true);
+//                break;
+//            case 4:
+//                jchkbYape.setSelected(true);
+//                break;
+//            case 5:
+//                jchkbPlin.setSelected(true);
+//                break;
+//            default:
+//                buttonGroup1.clearSelection();
+//                break;
+//        }
 
-        jtfClieID.setText(obj[1].toString());
-        jtfNomClie.setText(obj[2].toString());
-        jtfApeClie.setText(obj[3].toString());
-        jtfDNI.setText(obj[4].toString());
-
-        if (obj[5] == obj[6]) {
-            jrbPagoTotal.setSelected(true);
-            jtfPagoTotal.setText(obj[5].toString());
-        } else {
-            jrbPagoParcial.setSelected(true);
-            jtfPagoParcial.setText(obj[6].toString());
-        }
+//        jtfClieID.setText(obj[1].toString());
+//        jtfNomClie.setText(obj[2].toString());
+//        jtfApeClie.setText(obj[3].toString());
+//        jtfDNI.setText(obj[4].toString());
+//
+//        if (obj[5] == obj[6]) {
+//            jrbPagoTotal.setSelected(true);
+//            jtfPagoTotal.setText(obj[5].toString());
+//        } else {
+//            jrbPagoParcial.setSelected(true);
+//            jtfPagoParcial.setText(obj[6].toString());
+//        }
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
-            date = sdf.parse(obj[7].toString());
+//            date = sdf.parse(obj[7].toString());
             jdcFechaOpe.setDate(date);
         } catch (Exception e) {
 
         }
 
-        DaoDetOperacion daoDetOperacion = new DaoDetOperacionImpl();
-        List<Object[]> list = daoDetOperacion.get_DetOperacion_2(idVenta);
+        DaoDetalleOperacion daoDetOperacion = new DaoDetalleOperacionImpl();
+        List<Object[]> list = daoDetOperacion.fnd_DetalleOperacion_1_1(idVenta);
         DefaultTableModel model = (DefaultTableModel) jtVentas.getModel();
         model.setRowCount(0);
 
@@ -234,7 +234,7 @@ public class VentasUI extends javax.swing.JFrame {
 
     public void listarServicios(Integer id) {
         DaoServicios daoServicios = new DaoServiciosImpl();
-        List<Servicios> list = daoServicios.lst_Servicios_x_Cate_2(id);
+        List<Servicios> list = daoServicios.lst_Servicios_x_Categoria_2(id);
         obj_serv = new Integer[list.size()][2];
 
         for (int i = 0; i < list.size(); i++) {
@@ -246,7 +246,7 @@ public class VentasUI extends javax.swing.JFrame {
 
     public void listarEstilistas() {
         DaoUsuarios daoUsuarios = new DaoUsuariosImpl();
-        List<Usuarios> list = daoUsuarios.listarUsuarios();
+        List<Usuarios> list = daoUsuarios.lst_Usuarios_2_1();
         obj_estl = new Integer[list.size()][2];
         String nombre = "";
 
@@ -523,7 +523,7 @@ public class VentasUI extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 255));
         jLabel15.setText("VENTA TOTAL:");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Operación"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Venta"));
 
         jLabel1.setText("Servicio:");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -620,33 +620,32 @@ public class VentasUI extends javax.swing.JFrame {
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jtfDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jcbCategorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jcbServicios, 0, 251, Short.MAX_VALUE)))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(5, 5, 5)
-                                    .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jcbCategorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbServicios, 0, 251, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -1152,50 +1151,48 @@ public class VentasUI extends javax.swing.JFrame {
 
         if (Ok == 0) {
             try {
-                Operacion operacionBE = new Operacion();
+                Operaciones operacionBE = new Operaciones();
 
                 // temporal
                 mnt_cobrado = mnt_pagado;
                 mnt_saldo = totalVenta - mnt_pagado;
 
                 operacionBE.setTope_id(1);
-                operacionBE.setMpag_id(met_pago_id);
-                operacionBE.setCaja_id(null);
                 operacionBE.setUser_id(2);
-                operacionBE.setClie_id(clieID);
-                operacionBE.setProv_id(null);
-                operacionBE.setOper_timestamp(null);
+//                operacionBE.setTcom_id();
+//                operacionBE.setOper_flag_emit_comp();
+//                operacionBE.setOper_flag_impr_comp();
+                operacionBE.setFpag_id(met_pago_id);
+//                operacionBE.setPeri_id(null);
                 operacionBE.setOper_monto(totalVenta);
-                operacionBE.setOper_pagado(mnt_pagado);
-                operacionBE.setOper_vuelto(0.0);
-                operacionBE.setOper_cobrado(mnt_cobrado);
-                operacionBE.setOper_saldo(mnt_saldo);
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 operacionBE.setOper_fecha(sdf.format(jdcFechaOpe.getDate()));
+//                operacionBE.setEsta_id(null);
+                operacionBE.setOper_timestamp(null);
 
                 DaoOperacion daoOperacion = new DaoOperacionImpl();
 
-                int idOpe = daoOperacion.registrarOperacion(operacionBE);
+                int idOpe = daoOperacion.ins_Operaciones(operacionBE);
 
-                DetOperacion detOperacionBE = null;
-                DaoDetOperacion daoDetOperacion = new DaoDetOperacionImpl();
-                List<DetOperacion> list = new ArrayList<DetOperacion>();
+                DetalleOperacion detOperacionBE = null;
+                DaoDetalleOperacion daoDetOperacion = new DaoDetalleOperacionImpl();
+                List<DetalleOperacion> list = new ArrayList<DetalleOperacion>();
 
                 for (int i = 0; i < jtVentas.getRowCount(); i++) {
-                    detOperacionBE = new DetOperacion();
+                    detOperacionBE = new DetalleOperacion();
                     detOperacionBE.setOper_id(idOpe);
                     detOperacionBE.setUser_id(Integer.parseInt(jtVentas.getModel().getValueAt(i, 5).toString()));
                     detOperacionBE.setServ_id(Integer.parseInt(jtVentas.getModel().getValueAt(i, 1).toString()));
-                    detOperacionBE.setProd_id(null);
-                    detOperacionBE.setDope_s_p(jtVentas.getModel().getValueAt(i, 2).toString());
+//                    detOperacionBE.setProd_id(null);
+//                    detOperacionBE.setDope_s_p(jtVentas.getModel().getValueAt(i, 2).toString());
                     detOperacionBE.setDope_precio(Double.parseDouble(jtVentas.getModel().getValueAt(i, 7).toString()));
                     detOperacionBE.setDope_cantidad(Integer.parseInt(jtVentas.getModel().getValueAt(i, 8).toString()));
                     detOperacionBE.setDope_subtotal(Double.parseDouble(jtVentas.getModel().getValueAt(i, 9).toString()));
                     detOperacionBE.setDope_descuento(Double.parseDouble(jtVentas.getModel().getValueAt(i, 10).toString()));
                     detOperacionBE.setDope_total(Double.parseDouble(jtVentas.getModel().getValueAt(i, 11).toString()));
                     detOperacionBE.setDope_timestamp(null);
-                    message = daoDetOperacion.registrarDetOperacion(detOperacionBE);
+                    message = daoDetOperacion.ins_DetalleOperacion(detOperacionBE);
                     list.add(detOperacionBE);
                 }
 
@@ -1257,7 +1254,7 @@ public class VentasUI extends javax.swing.JFrame {
 
         if (id > 0) {
             Integer index = Integer.parseInt(obj_serv[id - 1][1].toString());
-            precio = daoServicios.get_Precio_Servicio(index);
+            precio = daoServicios.fnd_Precio_x_Servicio(index);
 
             if (precio == null) {
                 jtfPrecio.setText("");
@@ -1328,7 +1325,7 @@ public class VentasUI extends javax.swing.JFrame {
         Clientes clientes = new Clientes();
 
 //        List<Clientes> list = daoClientes.getClientePorNombre("%" + jtfNomClie.getText() + "%");
-        List<Clientes> list = daoClientes.lstClientes_2();
+        List<Clientes> list = daoClientes.lst_Clientes_2();
 
         if (list.size() < 0) {
             return;
@@ -1409,7 +1406,7 @@ public class VentasUI extends javax.swing.JFrame {
             data[i][1] = cl.getClie_nombres();
             data[i][2] = cl.getClie_apellidos();
             data[i][3] = cl.getClie_dni();
-            data[i][4] = cl.getClie_estado();
+            data[i][4] = cl.isClie_estado();
             i++;
         }
 

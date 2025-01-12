@@ -42,33 +42,33 @@ public class MantServUI extends javax.swing.JFrame {
 
         jtServicios.getColumnModel().getColumn(1).setMaxWidth(150);
         jtServicios.getColumnModel().getColumn(1).setMinWidth(150);
-        jtServicios.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(150);
-        jtServicios.getTableHeader().getColumnModel().getColumn(1).setMinWidth(150);
+        jtServicios.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(130);
+        jtServicios.getTableHeader().getColumnModel().getColumn(1).setMinWidth(130);
 
         jtServicios.getColumnModel().getColumn(2).setMaxWidth(150);
         jtServicios.getColumnModel().getColumn(2).setMinWidth(150);
-        jtServicios.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(150);
-        jtServicios.getTableHeader().getColumnModel().getColumn(2).setMinWidth(150);
+        jtServicios.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(130);
+        jtServicios.getTableHeader().getColumnModel().getColumn(2).setMinWidth(130);
 
-        jtServicios.getColumnModel().getColumn(3).setMaxWidth(0);
-        jtServicios.getColumnModel().getColumn(3).setMinWidth(0);
-        jtServicios.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
-        jtServicios.getTableHeader().getColumnModel().getColumn(3).setMinWidth(0);
+        jtServicios.getColumnModel().getColumn(3).setMaxWidth(80);
+        jtServicios.getColumnModel().getColumn(3).setMinWidth(80);
+        jtServicios.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(80);
+        jtServicios.getTableHeader().getColumnModel().getColumn(3).setMinWidth(80);
 
-        jtServicios.getColumnModel().getColumn(4).setMaxWidth(150);
-        jtServicios.getColumnModel().getColumn(4).setMinWidth(150);
-        jtServicios.getTableHeader().getColumnModel().getColumn(4).setMaxWidth(150);
-        jtServicios.getTableHeader().getColumnModel().getColumn(4).setMinWidth(150);
+        jtServicios.getColumnModel().getColumn(4).setMaxWidth(0);
+        jtServicios.getColumnModel().getColumn(4).setMinWidth(0);
+        jtServicios.getTableHeader().getColumnModel().getColumn(4).setMaxWidth(0);
+        jtServicios.getTableHeader().getColumnModel().getColumn(4).setMinWidth(0);
 
-        jtServicios.getColumnModel().getColumn(5).setMaxWidth(80);
-        jtServicios.getColumnModel().getColumn(5).setMinWidth(80);
-        jtServicios.getTableHeader().getColumnModel().getColumn(5).setMaxWidth(80);
-        jtServicios.getTableHeader().getColumnModel().getColumn(5).setMinWidth(80);
+        jtServicios.getColumnModel().getColumn(5).setMaxWidth(150);
+        jtServicios.getColumnModel().getColumn(5).setMinWidth(150);
+        jtServicios.getTableHeader().getColumnModel().getColumn(5).setMaxWidth(130);
+        jtServicios.getTableHeader().getColumnModel().getColumn(5).setMinWidth(130);
 
-        jtServicios.getColumnModel().getColumn(6).setMaxWidth(90);
-        jtServicios.getColumnModel().getColumn(6).setMinWidth(90);
-        jtServicios.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(90);
-        jtServicios.getTableHeader().getColumnModel().getColumn(6).setMinWidth(90);
+        jtServicios.getColumnModel().getColumn(6).setMaxWidth(80);
+        jtServicios.getColumnModel().getColumn(6).setMinWidth(80);
+        jtServicios.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(80);
+        jtServicios.getTableHeader().getColumnModel().getColumn(6).setMinWidth(80);
     }
 
     public void inicializarDatos() {
@@ -111,7 +111,7 @@ public class MantServUI extends javax.swing.JFrame {
 
     public void listarServicios() {
         DaoServicios daoServicio = new DaoServiciosImpl();
-        List<Object[]> list = daoServicio.lst_Servicios();
+        List<Object[]> list = daoServicio.lst_Servicios_1_1();
 
         DefaultTableModel model = (DefaultTableModel) jtServicios.getModel();
         model.setRowCount(0);
@@ -166,7 +166,7 @@ public class MantServUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Servicio", "Descripción", "id_Categoria", "Categoria", "Precio", "Estado", "Fec. Ult. Mod."
+                "ID", "Servicio", "Descripción", "Precio", "cate_id", "Categoria", "Estado", "Fec. Ult. Mod."
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -194,36 +194,42 @@ public class MantServUI extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Categoría:");
+        jLabel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Nombre:");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setText("Descripción:");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setText("Precio:");
+        jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel5.setText("S/.");
 
         jLabel8.setText("ID:");
+        jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jtfID.setEnabled(false);
 
         jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         jLabel6.setText("Estado:");
+        jLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,29 +249,29 @@ public class MantServUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jcbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
 
@@ -323,17 +329,17 @@ public class MantServUI extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(16, 16, 16)
                 .addComponent(jbNuevo)
-                .addGap(5, 5, 5)
+                .addGap(10, 10, 10)
                 .addComponent(jbLimpiar)
-                .addGap(5, 5, 5)
+                .addGap(10, 10, 10)
                 .addComponent(jbModificar)
-                .addGap(5, 5, 5)
+                .addGap(10, 10, 10)
                 .addComponent(jbGuardar)
-                .addGap(5, 5, 5)
+                .addGap(10, 10, 10)
                 .addComponent(jbEliminar)
-                .addGap(15, 15, 15))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,8 +374,8 @@ public class MantServUI extends javax.swing.JFrame {
         jtfID.setText(jtServicios.getValueAt(row, 0).toString());
         jtfNombre.setText(jtServicios.getValueAt(row, 1).toString());
         jtfDescripcion.setText(jtServicios.getValueAt(row, 2).toString());
-
-        Integer id = Integer.parseInt(jtServicios.getValueAt(row, 3).toString());
+        jtfPrecio.setText(jtServicios.getValueAt(row, 3).toString());
+        Integer id = Integer.parseInt(jtServicios.getValueAt(row, 4).toString());
 
         for (int i = 0; i < obj_cate.length; i++) {
             Integer index = Integer.parseInt(obj_cate[i][1].toString());
@@ -377,8 +383,6 @@ public class MantServUI extends javax.swing.JFrame {
                 jcbCategorias.setSelectedIndex(i + 1);
             }
         }
-
-        jtfPrecio.setText(jtServicios.getValueAt(row, 5).toString());
 
         if (jtServicios.getValueAt(row, 6) == "Activo") {
             jcbEstado.setSelectedIndex(0);
@@ -392,11 +396,7 @@ public class MantServUI extends javax.swing.JFrame {
         jbGuardar.setEnabled(false);
         jbEliminar.setEnabled(true);
 
-        jcbCategorias.setEnabled(false);
-        jtfNombre.setEnabled(false);
-        jtfDescripcion.setEnabled(false);
-        jtfPrecio.setEnabled(false);
-        jcbEstado.setEnabled(false);
+        habilita_campos(false);
     }//GEN-LAST:event_jtServiciosMouseClicked
 
     private void jcbCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCategoriasActionPerformed
@@ -500,12 +500,27 @@ public class MantServUI extends javax.swing.JFrame {
 
         DaoServicios daoServicios = new DaoServiciosImpl();
         if (accion == 0) {
-            message = daoServicios.ins_Servicio(servicio);
+            message = daoServicios.ins_Servicios(servicio);
         } else {
-            message = daoServicios.upd_Servicio(servicio);
+            message = daoServicios.upd_Servicios(servicio);
         }
 
+        if (message != null) {
+            JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String cad = null;
+        if (accion == 0) {
+            cad = "Producto registrado satisfactoriamente.";
+        } else {
+            cad = "Producto actualizado satisfactoriamente.";
+        }
+        
+        JOptionPane.showMessageDialog(null, cad, "En hora buena!", JOptionPane.INFORMATION_MESSAGE);
+
         limpiar_Datos();
+        habilita_campos(false);
 
         jbNuevo.setEnabled(true);
         jbLimpiar.setEnabled(false);

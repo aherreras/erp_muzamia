@@ -33,32 +33,67 @@ public class ConfigUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbConfCate = new javax.swing.JButton();
-        jbConfProd = new javax.swing.JButton();
-        jbConfMetPago = new javax.swing.JButton();
+        jbConfCateServ = new javax.swing.JButton();
+        jbConfServ = new javax.swing.JButton();
+        jbConfFormPago = new javax.swing.JButton();
         jbConfTipOperacion = new javax.swing.JButton();
         jbConfPeriodo = new javax.swing.JButton();
         jbConfProveedores = new javax.swing.JButton();
-        jbConfPesos = new javax.swing.JButton();
-        jbAsigPrecios = new javax.swing.JButton();
+        jbConfProd = new javax.swing.JButton();
+        jbConfEstilistas = new javax.swing.JButton();
         jbConfAlmacenes = new javax.swing.JButton();
         jbConfCompPago = new javax.swing.JButton();
-        jbConfMonedas = new javax.swing.JButton();
+        jbConfCateProd = new javax.swing.JButton();
 
         setClosable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setIconifiable(true);
         setTitle("CONFIGURACIONES");
 
-        jbConfCate.setText("Configurar CATEGORIAS");
-        jbConfCate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbConfCate.addActionListener(new java.awt.event.ActionListener() {
+        jbConfCateServ.setBackground(new java.awt.Color(204, 255, 255));
+        jbConfCateServ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-category-30.png"))); // NOI18N
+        jbConfCateServ.setText("CAT. SERVICIOS");
+        jbConfCateServ.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbConfCateServ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfCateActionPerformed(evt);
+                jbConfCateServActionPerformed(evt);
             }
         });
 
-        jbConfProd.setText("Configurar SERVICIOS / PRODUCTOS");
+        jbConfServ.setBackground(new java.awt.Color(204, 204, 255));
+        jbConfServ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-list-30.png"))); // NOI18N
+        jbConfServ.setText("SERVICIOS");
+        jbConfServ.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbConfServ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfServActionPerformed(evt);
+            }
+        });
+
+        jbConfFormPago.setText("Configurar FORMAS DE PAGO");
+        jbConfFormPago.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbConfFormPago.setEnabled(false);
+
+        jbConfTipOperacion.setText("Configurar TIPO DE OPERACION");
+        jbConfTipOperacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbConfTipOperacion.setEnabled(false);
+
+        jbConfPeriodo.setBackground(new java.awt.Color(0, 153, 153));
+        jbConfPeriodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-investment-30.png"))); // NOI18N
+        jbConfPeriodo.setText("PERIODOS DE FACTURACION");
+        jbConfPeriodo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jbConfProveedores.setText("Configurar PROVEEDORES");
+        jbConfProveedores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbConfProveedores.setEnabled(false);
+        jbConfProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfProveedoresActionPerformed(evt);
+            }
+        });
+
+        jbConfProd.setBackground(new java.awt.Color(204, 255, 204));
+        jbConfProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-toiletries-30.png"))); // NOI18N
+        jbConfProd.setText("PRODUCTOS");
         jbConfProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbConfProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,41 +101,13 @@ public class ConfigUI extends javax.swing.JInternalFrame {
             }
         });
 
-        jbConfMetPago.setText("Configurar METODO DE PAGO");
-        jbConfMetPago.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbConfMetPago.setEnabled(false);
-
-        jbConfTipOperacion.setText("Configurar TIPO DE OPERACION");
-        jbConfTipOperacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbConfTipOperacion.setEnabled(false);
-
-        jbConfPeriodo.setText("Configurar PERIODOS DE FACTURACION");
-        jbConfPeriodo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbConfPeriodo.setEnabled(false);
-
-        jbConfProveedores.setText("Configurar PROVEEDORES");
-        jbConfProveedores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbConfProveedores.addActionListener(new java.awt.event.ActionListener() {
+        jbConfEstilistas.setBackground(new java.awt.Color(204, 153, 0));
+        jbConfEstilistas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-stylist-30.png"))); // NOI18N
+        jbConfEstilistas.setText("ESTILISTAS");
+        jbConfEstilistas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbConfEstilistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfProveedoresActionPerformed(evt);
-            }
-        });
-
-        jbConfPesos.setText("Configurar PESOS");
-        jbConfPesos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbConfPesos.setEnabled(false);
-        jbConfPesos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfPesosActionPerformed(evt);
-            }
-        });
-
-        jbAsigPrecios.setText("Asignar PRECIOS");
-        jbAsigPrecios.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbAsigPrecios.setEnabled(false);
-        jbAsigPrecios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAsigPreciosActionPerformed(evt);
+                jbConfEstilistasActionPerformed(evt);
             }
         });
 
@@ -122,12 +129,13 @@ public class ConfigUI extends javax.swing.JInternalFrame {
             }
         });
 
-        jbConfMonedas.setText("Configurar MONEDAS");
-        jbConfMonedas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jbConfMonedas.setEnabled(false);
-        jbConfMonedas.addActionListener(new java.awt.event.ActionListener() {
+        jbConfCateProd.setBackground(new java.awt.Color(255, 204, 204));
+        jbConfCateProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-category-30.png"))); // NOI18N
+        jbConfCateProd.setText("CAT. PRODUCTOS");
+        jbConfCateProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbConfCateProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfMonedasActionPerformed(evt);
+                jbConfCateProdActionPerformed(evt);
             }
         });
 
@@ -138,26 +146,26 @@ public class ConfigUI extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbConfProd, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(jbConfAlmacenes, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbConfCate, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(jbConfProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jbConfPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbConfTipOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbConfMetPago, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jbConfFormPago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jbConfPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(124, 124, 124)
-                            .addComponent(jbConfCompPago, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbConfCateServ, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                            .addComponent(jbConfCateProd, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jbConfServ, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbConfProd, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbConfTipOperacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jbAsigPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(124, 124, 124)
-                            .addComponent(jbConfMonedas, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jbConfEstilistas, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbConfAlmacenes, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jbConfProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbConfCompPago, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -165,59 +173,59 @@ public class ConfigUI extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbConfCate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbConfCateServ, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbConfCateProd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbConfServ, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbConfProd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbConfAlmacenes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbConfEstilistas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbConfCompPago, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbConfProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbConfProd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbConfAlmacenes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbConfPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbConfCompPago, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAsigPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbConfMonedas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jbConfMetPago, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbConfFormPago, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jbConfTipOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jbConfPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbConfCateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfCateActionPerformed
-        MantCateUI mantCateUI = new MantCateUI();
+    private void jbConfCateServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfCateServActionPerformed
+        MantCateUI mantCateUI = new MantCateUI(0);
         mantCateUI.pack();
         mantCateUI.setLocationRelativeTo(null);
         mantCateUI.setVisible(true);
-    }//GEN-LAST:event_jbConfCateActionPerformed
+    }//GEN-LAST:event_jbConfCateServActionPerformed
 
-    private void jbConfProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfProdActionPerformed
+    private void jbConfServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfServActionPerformed
         MantServUI mantServUI = new MantServUI();
         mantServUI.pack();
         mantServUI.setLocationRelativeTo(null);
         mantServUI.setVisible(true);
+    }//GEN-LAST:event_jbConfServActionPerformed
+
+    private void jbConfProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfProdActionPerformed
+        MantProdUI mantProdUI = new MantProdUI();
+        mantProdUI.pack();
+        mantProdUI.setLocationRelativeTo(null);
+        mantProdUI.setVisible(true);
     }//GEN-LAST:event_jbConfProdActionPerformed
 
-    private void jbConfPesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfPesosActionPerformed
-//        MantPesoUI mantPesoUI = new MantPesoUI();
-//        mantPesoUI.pack();
-//        mantPesoUI.setLocationRelativeTo(null);
-//        mantPesoUI.setVisible(true);
-    }//GEN-LAST:event_jbConfPesosActionPerformed
-
-    private void jbAsigPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAsigPreciosActionPerformed
-//        MantPrecioUI mantPrecioUI = new MantPrecioUI();
-//        mantPrecioUI.pack();
-//        mantPrecioUI.setLocationRelativeTo(null);
-//        mantPrecioUI.setVisible(true);
-    }//GEN-LAST:event_jbAsigPreciosActionPerformed
+    private void jbConfEstilistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfEstilistasActionPerformed
+        MantEstiUI mantEstiUI = new MantEstiUI();
+        mantEstiUI.pack();
+        mantEstiUI.setLocationRelativeTo(null);
+        mantEstiUI.setVisible(true);
+    }//GEN-LAST:event_jbConfEstilistasActionPerformed
 
     private void jbConfProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfProveedoresActionPerformed
         MantProvUI mantProvUI = new MantProvUI();
@@ -240,25 +248,25 @@ public class ConfigUI extends javax.swing.JInternalFrame {
 //        mantComp.setVisible(true);
     }//GEN-LAST:event_jbConfCompPagoActionPerformed
 
-    private void jbConfMonedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfMonedasActionPerformed
-//        MantMoneUI mantMone = new MantMoneUI();
-//        mantMone.pack();
-//        mantMone.setLocationRelativeTo(null);
-//        mantMone.setVisible(true);
-    }//GEN-LAST:event_jbConfMonedasActionPerformed
+    private void jbConfCateProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfCateProdActionPerformed
+        MantCateUI mantCateUI = new MantCateUI(1);
+        mantCateUI.pack();
+        mantCateUI.setLocationRelativeTo(null);
+        mantCateUI.setVisible(true);
+    }//GEN-LAST:event_jbConfCateProdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbAsigPrecios;
     private javax.swing.JButton jbConfAlmacenes;
-    private javax.swing.JButton jbConfCate;
+    private javax.swing.JButton jbConfCateProd;
+    private javax.swing.JButton jbConfCateServ;
     private javax.swing.JButton jbConfCompPago;
-    private javax.swing.JButton jbConfMetPago;
-    private javax.swing.JButton jbConfMonedas;
+    private javax.swing.JButton jbConfEstilistas;
+    private javax.swing.JButton jbConfFormPago;
     private javax.swing.JButton jbConfPeriodo;
-    private javax.swing.JButton jbConfPesos;
     private javax.swing.JButton jbConfProd;
     private javax.swing.JButton jbConfProveedores;
+    private javax.swing.JButton jbConfServ;
     private javax.swing.JButton jbConfTipOperacion;
     // End of variables declaration//GEN-END:variables
 }

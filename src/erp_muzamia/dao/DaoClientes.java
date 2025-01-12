@@ -12,19 +12,19 @@ import erp_muzamia.dto.Clientes;
  * @author User
  */
 public interface DaoClientes {
-    
-    public Clientes getCliente(Integer dni);
-    
-    public Integer getID(Integer dni);
-    
-    public List<Object[]> lstClientes();    
-    
-    public List<Clientes> lstClientes_2();
-    
-    public List<Clientes> getClientePorNombre(String nombres);
-    
-    public String insCliente(Clientes clientes);
-    
-    public String updCliente(Clientes clientes);
-    
+
+    public String ins_Clientes(Clientes clientes);
+
+    public String upd_Clientes(Clientes clientes);
+
+    public List<Object[]> lst_Clientes_1();
+
+    public List<Object[]> lst_Clientes_1_2();
+
+    public List<Clientes> lst_Clientes_2();
+
+    public Clientes fnd_Clientes(int dni);
+
+    public List<Clientes> fnd_Clientes_x_Nombre(String nombres);
+
 }

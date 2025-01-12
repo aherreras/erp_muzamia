@@ -10,16 +10,16 @@ package erp_muzamia.dto;
  */
 public class Categorias {
     
-    private Integer cate_id;
+    private int cate_id;
     private String cate_descripcion;
     private boolean cate_estado;
     private String cate_timestamp;
 
-    public Integer getCate_id() {
+    public int getCate_id() {
         return cate_id;
     }
 
-    public void setCate_id(Integer cate_id) {
+    public void setCate_id(int cate_id) {
         this.cate_id = cate_id;
     }
 

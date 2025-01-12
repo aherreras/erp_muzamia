@@ -5,8 +5,11 @@
 package erp_muzamia.ui;
 
 import erp_muzamia.dao.DaoCategorias;
+import erp_muzamia.dao.DaoCategoriasProducto;
 import erp_muzamia.dao.impl.DaoCategoriasImpl;
+import erp_muzamia.dao.impl.DaoCategoriasProductoImpl;
 import erp_muzamia.dto.Categorias;
+import erp_muzamia.dto.CategoriasProducto;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,10 +25,18 @@ public class MantCateUI extends javax.swing.JFrame {
      */
     public MantCateUI() {
         initComponents();
-        listarCategorias();
+        listarCategorias(0);
+        listarColumnasTabla();
+    }
+    
+    public MantCateUI(int tipo_cate) {
+        initComponents();
+        this.tipo_cate = tipo_cate;
+        listarCategorias(tipo_cate);
         listarColumnasTabla();
     }
 
+    Integer tipo_cate = 0;
     Integer accion = 0;
 
     public void listarColumnasTabla() {
@@ -50,9 +61,9 @@ public class MantCateUI extends javax.swing.JFrame {
 //        jtCategorias.getTableHeader().getColumnModel().getColumn(3).setMinWidth(80);
     }
 
-    public void listarCategorias() {
+    public void listarCategorias(int tipo_cate) {
         DaoCategorias daoCategorias = new DaoCategoriasImpl();
-        List<Categorias> list = daoCategorias.lst_Categorias_3();
+        List<Categorias> list = daoCategorias.lst_Categorias_2_1(tipo_cate);
 
         if (list != null) {
             Object[] row;
@@ -358,23 +369,23 @@ public class MantCateUI extends javax.swing.JFrame {
 
         DaoCategorias daoCategorias = new DaoCategoriasImpl();
         if (accion == 0) {
-            message = daoCategorias.ins_Categoria(categorias);
+            message = daoCategorias.ins_Categorias(categorias, tipo_cate);
         } else {
-            message = daoCategorias.upd_Categoria(categorias);
+            message = daoCategorias.upd_Categorias(categorias, tipo_cate);
         }
 
         if (message != null) {
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         String cad = null;
         if (accion == 0) {
             cad = "Categoría registrado satisfactoriamente.";
         } else {
             cad = "Categoría actualizado satisfactoriamente.";
         }
-        
+
         JOptionPane.showMessageDialog(null, cad, "En hora buena!", JOptionPane.INFORMATION_MESSAGE);
 
         limpiar_datos();
@@ -386,7 +397,7 @@ public class MantCateUI extends javax.swing.JFrame {
         jbGuardar.setEnabled(false);
         jbEliminar.setEnabled(false);
 
-        listarCategorias();
+        listarCategorias(tipo_cate);
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     /**

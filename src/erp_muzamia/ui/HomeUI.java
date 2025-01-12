@@ -84,7 +84,6 @@ public class HomeUI extends javax.swing.JFrame {
         jbInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-empty-box-25.png"))); // NOI18N
         jbInventario.setText("Inventario");
         jbInventario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jbInventario.setEnabled(false);
         jbInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbInventario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -136,21 +135,18 @@ public class HomeUI extends javax.swing.JFrame {
         jbGraficos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-chart-25.png"))); // NOI18N
         jbGraficos.setText("Gráficos");
         jbGraficos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jbGraficos.setEnabled(false);
         jbGraficos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbGraficos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jbReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-report-25.png"))); // NOI18N
         jbReportes.setText("Reportes");
         jbReportes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jbReportes.setEnabled(false);
         jbReportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbReportes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jbCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-register-machine-25.png"))); // NOI18N
-        jbCaja.setText("Mov. Caja");
+        jbCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/erp_muzamia/ui/imgs/icons8-buy-30.png"))); // NOI18N
+        jbCaja.setText("Compras");
         jbCaja.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jbCaja.setEnabled(false);
         jbCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbCaja.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jbCaja.addActionListener(new java.awt.event.ActionListener() {
@@ -213,10 +209,20 @@ public class HomeUI extends javax.swing.JFrame {
 
         jmiNuevoCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jmiNuevoCliente.setText("Cliente");
+        jmiNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNuevoClienteActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiNuevoCliente);
 
         jmiUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jmiUsuario.setText("Usuario");
+        jmiUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiUsuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiUsuario);
 
         jMenu2.add(jMenu1);
@@ -328,10 +334,13 @@ public class HomeUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiLimpiarActionPerformed
 
     private void jmiNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNuevaVentaActionPerformed
-        VentasUI ventaUI = new VentasUI();
-        ventaUI.pack();
-        ventaUI.setLocationRelativeTo(null);
-        ventaUI.setVisible(true);
+//        VentasUI ventaUI = new VentasUI();
+//        ventaUI.pack();
+//        ventaUI.setLocationRelativeTo(null);
+//        ventaUI.setVisible(true);
+        VentasUI2 ven = new VentasUI2();
+        jdpFrames.add(ven);
+        ven.show(); 
     }//GEN-LAST:event_jmiNuevaVentaActionPerformed
 
     private void jmiReporteOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReporteOperacionesActionPerformed
@@ -369,10 +378,9 @@ public class HomeUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCajaActionPerformed
 
     private void jbClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClientesActionPerformed
-        ClienteUI_OLD clienteUI = new ClienteUI_OLD();
-        clienteUI.pack();
-        clienteUI.setLocationRelativeTo(null);
-        clienteUI.setVisible(true);
+        MantClienteUI mantClienteUI = new MantClienteUI();
+        jdpFrames.add(mantClienteUI);
+        mantClienteUI.show();
     }//GEN-LAST:event_jbClientesActionPerformed
 
     private void jbConfigurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfigurarActionPerformed
@@ -380,6 +388,16 @@ public class HomeUI extends javax.swing.JFrame {
         jdpFrames.add(configUI);
         configUI.show();
     }//GEN-LAST:event_jbConfigurarActionPerformed
+
+    private void jmiNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNuevoClienteActionPerformed
+        MantClienteUI mantClienteUI = new MantClienteUI();
+        jdpFrames.add(mantClienteUI);
+        mantClienteUI.show();
+    }//GEN-LAST:event_jmiNuevoClienteActionPerformed
+
+    private void jmiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

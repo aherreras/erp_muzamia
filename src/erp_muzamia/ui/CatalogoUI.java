@@ -83,18 +83,18 @@ public class CatalogoUI extends javax.swing.JInternalFrame {
 
     public void listarData() {
         DaoServicios daoServicios = new DaoServiciosImpl();
-        List<Servicios> list = daoServicios.lst_Servicios_3();
+//        List<Servicios> list = daoServicios.lst_Servicios_3();
         DefaultTableModel model = (DefaultTableModel) jtblServicios.getModel();
         Object[] obj;
-        for (Servicios srv : list) {
-            obj = new Object[5];
-            obj[0] = srv.getServ_id();
-            obj[1] = srv.getServ_nombre();
-            obj[2] = srv.getServ_descripcion();
-            obj[3] = srv.getServ_precio();
-            obj[4] = srv.getCate_id();
-            model.addRow(obj);
-        }
+//        for (Servicios srv : list) {
+//            obj = new Object[5];
+//            obj[0] = srv.getServ_id();
+//            obj[1] = srv.getServ_nombre();
+//            obj[2] = srv.getServ_descripcion();
+//            obj[3] = srv.getServ_precio();
+//            obj[4] = srv.getCate_id();
+//            model.addRow(obj);
+//        }
     }
     
     public void listarCategorias() {

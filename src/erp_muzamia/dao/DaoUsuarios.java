@@ -12,13 +12,19 @@ import erp_muzamia.dto.Usuarios;
  * @author User
  */
 public interface DaoUsuarios {
+
+    public String ins_Usuarios(Usuarios usuarios);
+
+    public String upd_Usuarios(Usuarios usuarios);
+
+    public List<Object[]> lst_Usuarios_1();
+
+    public List<Object[]> lst_Usuarios_1_1();
+
+    public List<Usuarios> lst_Usuarios_2();
     
-    public Usuarios getUsuario(String cod);
-    
-    public Integer getID(String cod);
-    
-    public List<Object[]> Listar_Usuarios();
-    
-    public List<Usuarios> listarUsuarios();
-    
+    public List<Usuarios> lst_Usuarios_2_1();
+
+    public Usuarios fnd_Usuarios(String cod);
+
 }

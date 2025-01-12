@@ -11,21 +11,27 @@ import erp_muzamia.dto.Servicios;
  * @author User
  */
 public interface DaoServicios {
+
+    public String ins_Servicios(Servicios servicios);
+
+    public String upd_Servicios(Servicios servicios);
     
-    public List<Object[]> lst_Servicios_x_Cate(Integer id);
+    public List<Object[]> lst_Servicios_1();
     
-    public List<Servicios> lst_Servicios_x_Cate_2(Integer id);
+    public List<Object[]> lst_Servicios_1_1();
     
-    public List<Object[]> lst_Servicios();
+    public List<Servicios> lst_Servicios_2();
+        
+    public List<Servicios> lst_Servicios_2_1();
     
-    public List<Object[]> lst_Servicios_2();
+    public List<Object[]> lst_Servicios_x_Categoria_1_1(int id);
     
-    public List<Servicios> lst_Servicios_3();
+    public List<Object[]> lst_Servicios_x_Categoria_1_2();
     
-    public Double get_Precio_Servicio(Integer id);
+    public List<Object[]> lst_Servicios_x_Categoria_1_3();
     
-    public String ins_Servicio (Servicios servicios);
+    public List<Servicios> lst_Servicios_x_Categoria_2(int id);
     
-    public String upd_Servicio (Servicios servicios);
+    public double fnd_Precio_x_Servicio(int id);
     
 }

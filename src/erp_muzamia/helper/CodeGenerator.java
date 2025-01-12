@@ -4,8 +4,8 @@
  */
 package erp_muzamia.helper;
 
-import erp_muzamia.dto.DetOperacion;
-import erp_muzamia.dto.Operacion;
+import erp_muzamia.dto.DetalleOperacion;
+import erp_muzamia.dto.Operaciones;
 import java.util.List;
 
 /**
@@ -15,10 +15,10 @@ import java.util.List;
 public class CodeGenerator {
 
     String strDateTime;
-    List<DetOperacion> list;
-    Operacion operacion;
+    List<DetalleOperacion> list;
+    Operaciones operacion;
     
-    public CodeGenerator(String strDateTime, List<DetOperacion> list, Operacion operacion) {
+    public CodeGenerator(String strDateTime, List<DetalleOperacion> list, Operaciones operacion) {
         this.strDateTime = strDateTime;
         this.list = list;
         this.operacion = operacion;
@@ -52,18 +52,18 @@ public class CodeGenerator {
 
         int n = 0;
 
-        for (DetOperacion det : list) {
-            int len = det.getDope_s_p().length();
-            
-            body.append(det.getDope_s_p())
-                    .append(" ")
-                    .append(det.getDope_precio().toString())
-                    .append(" ")
-                    .append(det.getDope_cantidad().toString())
-                    .append(" ")
-                    .append(det.getDope_descuento().toString())
-                    .append(" ")
-                    .append(det.getDope_total().toString() + "\n");
+        for (DetalleOperacion det : list) {
+//            int len = det.getDope_s_p().length();
+//            
+//            body.append(det.getDope_s_p())
+//                    .append(" ")
+//                    .append(det.getDope_precio().toString())
+//                    .append(" ")
+//                    .append(det.getDope_cantidad().toString())
+//                    .append(" ")
+//                    .append(det.getDope_descuento().toString())
+//                    .append(" ")
+//                    .append(det.getDope_total().toString() + "\n");
         }
 
         footer.append("-".repeat(32) + "\n")

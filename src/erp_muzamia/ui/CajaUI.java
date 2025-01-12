@@ -4,20 +4,18 @@
  */
 package erp_muzamia.ui;
 
-import erp_muzamia.dao.DaoDetOperacion;
-import erp_muzamia.dao.DaoFacturas;
 import erp_muzamia.dao.DaoOperacion;
 import erp_muzamia.dao.DaoProveedores;
-import erp_muzamia.dao.impl.DaoDetOperacionImpl;
-import erp_muzamia.dao.impl.DaoFacturasImpl;
+import erp_muzamia.dao.impl.DaoDetalleOperacionImpl;
 import erp_muzamia.dao.impl.DaoOperacionImpl;
 import erp_muzamia.dao.impl.DaoProveedoresImpl;
-import erp_muzamia.dto.DetOperacion;
-import erp_muzamia.dto.Operacion;
+import erp_muzamia.dto.DetalleOperacion;
+import erp_muzamia.dto.Operaciones;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import erp_muzamia.dao.DaoDetalleOperacion;
 
 /**
  *
@@ -30,52 +28,52 @@ public class CajaUI extends javax.swing.JInternalFrame {
      */
     public CajaUI() {
         initComponents();
-        listarCatOperacion();
-        listarProveedores();
-        listarComprobantes();
+//        listarCatOperacion();
+//        listarProveedores();
+//        listarComprobantes();
 
         Date date = new Date();
         jdcFechaOpe.setDate(date);
     }
 
-    public void listarCatOperacion() {
-        DaoFacturas daoFacturas = new DaoFacturasImpl();
-        List<Object[]> list = daoFacturas.lstCatOperacion();
+//    public void listarCatOperacion() {
+//        DaoFacturas daoFacturas = new DaoFacturasImpl();
+//        List<Object[]> list = daoFacturas.lstCatOperacion();
+//
+//        Object[] row;
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            row = new Object[2];
+//            row = list.get(i);
+//            jcbCatOperacion.addItem(row[1].toString());
+//        };
+//    }
 
-        Object[] row;
+//    public void listarProveedores() {
+//        DaoFacturas daoFacturas = new DaoFacturasImpl();
+//        List<Object[]> list = daoFacturas.lstProveedores();
+//
+//        Object[] row;
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            row = new Object[4];
+//            row = list.get(i);
+//            jcbItems.addItem(row[1].toString());
+//        };
+//    }
 
-        for (int i = 0; i < list.size(); i++) {
-            row = new Object[2];
-            row = list.get(i);
-            jcbCatOperacion.addItem(row[1].toString());
-        };
-    }
-
-    public void listarProveedores() {
-        DaoFacturas daoFacturas = new DaoFacturasImpl();
-        List<Object[]> list = daoFacturas.lstProveedores();
-
-        Object[] row;
-
-        for (int i = 0; i < list.size(); i++) {
-            row = new Object[4];
-            row = list.get(i);
-            jcbItems.addItem(row[1].toString());
-        };
-    }
-
-    public void listarComprobantes() {
-        DaoFacturas daoFacturas = new DaoFacturasImpl();
-        List<Object[]> list = daoFacturas.lstComprobantes();
-
-        Object[] row;
-
-        for (int i = 0; i < list.size(); i++) {
-            row = new Object[3];
-            row = list.get(i);
-            jcbComprobantes.addItem(row[1].toString());
-        };
-    }
+//    public void listarComprobantes() {
+//        DaoFacturas daoFacturas = new DaoFacturasImpl();
+//        List<Object[]> list = daoFacturas.lstComprobantes();
+//
+//        Object[] row;
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            row = new Object[3];
+//            row = list.get(i);
+//            jcbComprobantes.addItem(row[1].toString());
+//        };
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -267,7 +265,7 @@ public class CajaUI extends javax.swing.JInternalFrame {
 
         if (Ok == 0) {
 
-            Operacion operacionBE = new Operacion();
+            Operaciones operacionBE = new Operaciones();
 
             double mnt_pagado = 0.0;
             double mnt_cobrado = 0.0;
@@ -275,50 +273,50 @@ public class CajaUI extends javax.swing.JInternalFrame {
 
             mnt_pagado = Double.parseDouble(jtfImporte.getText());
 
-            operacionBE.setMpag_id(1);
-            operacionBE.setCaja_id(null);
+            operacionBE.setFpag_id(1);
+//            operacionBE.setCaja_id(null);
             operacionBE.setUser_id(2);
-            operacionBE.setClie_id(null);
+//            operacionBE.setClie_id(null);
             if (jcbCatOperacion.getSelectedIndex() == 0) {
-                operacionBE.setProv_id(jcbItems.getSelectedIndex() + 1);
+//                operacionBE.setProv_id(jcbItems.getSelectedIndex() + 1);
                 operacionBE.setTope_id(2);
             } else if (jcbCatOperacion.getSelectedIndex() == 1) {
-                operacionBE.setProv_id(null);
+//                operacionBE.setProv_id(null);
                 operacionBE.setTope_id(7);
             }
             operacionBE.setOper_timestamp(null);
             operacionBE.setOper_monto(mnt_pagado);
-            operacionBE.setOper_pagado(mnt_pagado);
-            operacionBE.setOper_vuelto(0.0);
-            operacionBE.setOper_cobrado(mnt_cobrado);
-            operacionBE.setOper_saldo(mnt_saldo);
+//            operacionBE.setOper_pagado(mnt_pagado);
+//            operacionBE.setOper_vuelto(0.0);
+//            operacionBE.setOper_cobrado(mnt_cobrado);
+//            operacionBE.setOper_saldo(mnt_saldo);
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             operacionBE.setOper_fecha(sdf.format(jdcFechaOpe.getDate()));
 
             DaoOperacion daoOperacion = new DaoOperacionImpl();
 
-            int idOpe = daoOperacion.registrarOperacion(operacionBE);
-            DaoDetOperacion daoDetOperacion = new DaoDetOperacionImpl();
+//            int idOpe = daoOperacion.registrarOperacion(operacionBE);
+            DaoDetalleOperacion daoDetOperacion = new DaoDetalleOperacionImpl();
             String message = null;
 
-            DetOperacion detOperacionBE = detOperacionBE = new DetOperacion();
-            detOperacionBE.setOper_id(idOpe);
+            DetalleOperacion detOperacionBE = detOperacionBE = new DetalleOperacion();
+//            detOperacionBE.setOper_id(idOpe);
             detOperacionBE.setUser_id(5);
-            detOperacionBE.setServ_id(null);
-            detOperacionBE.setProd_id(null);
-            detOperacionBE.setDope_s_p(jtfConcepto.getText());
+//            detOperacionBE.setServ_id(null);
+//            detOperacionBE.setProd_id(null);
+//            detOperacionBE.setDope_s_p(jtfConcepto.getText());
             detOperacionBE.setDope_precio(mnt_pagado);
             detOperacionBE.setDope_cantidad(1);
             detOperacionBE.setDope_subtotal(mnt_pagado);
             detOperacionBE.setDope_descuento(0.0);
             detOperacionBE.setDope_total(mnt_pagado);
             detOperacionBE.setDope_timestamp(null);
-            message = daoDetOperacion.registrarDetOperacion(detOperacionBE);
+            message = daoDetOperacion.ins_DetalleOperacion(detOperacionBE);
 
-            if (message == null && idOpe > 0) {
-                JOptionPane.showMessageDialog(null, "Operación registrada satisfactoriamente.", "En hora buena!", JOptionPane.INFORMATION_MESSAGE);
-            }
+//            if (message == null && idOpe > 0) {
+//                JOptionPane.showMessageDialog(null, "Operación registrada satisfactoriamente.", "En hora buena!", JOptionPane.INFORMATION_MESSAGE);
+//            }
         }
 
         return;

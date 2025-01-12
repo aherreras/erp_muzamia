@@ -4,8 +4,8 @@
  */
 package erp_muzamia.ui;
 
-import erp_muzamia.dto.DetOperacion;
-import erp_muzamia.dto.Operacion;
+import erp_muzamia.dto.DetalleOperacion;
+import erp_muzamia.dto.Operaciones;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
 import java.awt.print.PrinterException;
@@ -32,8 +32,8 @@ import javax.swing.text.html.HTMLWriter;
  */
 public class BoletaUI extends javax.swing.JFrame {
 
-    Operacion operacion;
-    List<DetOperacion> list;
+    Operaciones operacion;
+    List<DetalleOperacion> list;
 
     /**
      * Creates new form BoletaUI
@@ -42,7 +42,7 @@ public class BoletaUI extends javax.swing.JFrame {
         initComponents();
     }
 
-    public BoletaUI(Operacion operacion, List<DetOperacion> list) {
+    public BoletaUI(Operaciones operacion, List<DetalleOperacion> list) {
         initComponents();
         this.operacion = operacion;
         this.list = list;
@@ -82,13 +82,13 @@ public class BoletaUI extends javax.swing.JFrame {
                 .append("</td>")
                 .append("</tr>");
 
-        for (DetOperacion det : list) {
+        for (DetalleOperacion det : list) {
             sb.append("<tr>")
                     .append("<td>")
                     .append(det.getDope_id())
                     .append("</td>")
                     .append("<td>")
-                    .append(det.getDope_s_p())
+//                    .append(det.getDope_s_p())
                     .append("</td>")
                     .append("<td>")
                     .append("S/. " + det.getDope_precio())

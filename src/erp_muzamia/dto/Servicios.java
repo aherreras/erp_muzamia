@@ -10,19 +10,19 @@ package erp_muzamia.dto;
  */
 public class Servicios {
     
-    private Integer serv_id;
+    private int serv_id;
     private String serv_nombre;
     private String serv_descripcion;
     private double serv_precio;
-    private Integer cate_id;
+    private int cate_id;
     private boolean serv_estado;
     private String serv_timestamp;
 
-    public Integer getServ_id() {
+    public int getServ_id() {
         return serv_id;
     }
 
-    public void setServ_id(Integer serv_id) {
+    public void setServ_id(int serv_id) {
         this.serv_id = serv_id;
     }
 
@@ -50,11 +50,11 @@ public class Servicios {
         this.serv_precio = serv_precio;
     }
 
-    public Integer getCate_id() {
+    public int getCate_id() {
         return cate_id;
     }
 
-    public void setCate_id(Integer cate_id) {
+    public void setCate_id(int cate_id) {
         this.cate_id = cate_id;
     }
 

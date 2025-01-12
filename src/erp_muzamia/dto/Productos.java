@@ -10,79 +10,67 @@ package erp_muzamia.dto;
  */
 public class Productos {
 
-    private Integer prod_id;
+    private int prod_id;
+    private String prod_nombre;
     private String prod_descripcion;
-    private Double prod_precio;
-    private Boolean prod_estado;
-    private Integer cpro_id;
-    
-    /**
-     * @return the prod_id
-     */
-    public Integer getProd_id() {
+    private double prod_precio;
+    private int cpro_id;
+    private boolean prod_estado;
+    private String prod_timestamp;
+
+    public int getProd_id() {
         return prod_id;
     }
 
-    /**
-     * @param prod_id the prod_id to set
-     */
-    public void setProd_id(Integer prod_id) {
+    public void setProd_id(int prod_id) {
         this.prod_id = prod_id;
     }
 
-    /**
-     * @return the prod_descripcion
-     */
+    public String getProd_nombre() {
+        return prod_nombre;
+    }
+
+    public void setProd_nombre(String prod_nombre) {
+        this.prod_nombre = prod_nombre;
+    }
+
     public String getProd_descripcion() {
         return prod_descripcion;
     }
 
-    /**
-     * @param prod_descripcion the prod_descripcion to set
-     */
     public void setProd_descripcion(String prod_descripcion) {
         this.prod_descripcion = prod_descripcion;
     }
 
-    /**
-     * @return the prod_precio
-     */
-    public Double getProd_precio() {
+    public double getProd_precio() {
         return prod_precio;
     }
 
-    /**
-     * @param prod_precio the prod_precio to set
-     */
-    public void setProd_precio(Double prod_precio) {
+    public void setProd_precio(double prod_precio) {
         this.prod_precio = prod_precio;
     }
 
-    /**
-     * @return the prod_estado
-     */
-    public Boolean getProd_estado() {
-        return prod_estado;
-    }
-
-    /**
-     * @param prod_estado the prod_estado to set
-     */
-    public void setProd_estado(Boolean prod_estado) {
-        this.prod_estado = prod_estado;
-    }
-
-    /**
-     * @return the cpro_id
-     */
-    public Integer getCpro_id() {
+    public int getCpro_id() {
         return cpro_id;
     }
 
-    /**
-     * @param cpro_id the cpro_id to set
-     */
-    public void setCpro_id(Integer cpro_id) {
+    public void setCpro_id(int cpro_id) {
         this.cpro_id = cpro_id;
+    }
+
+    public boolean isProd_estado() {
+        return prod_estado;
+    }
+
+    public void setProd_estado(boolean prod_estado) {
+        this.prod_estado = prod_estado;
+    }
+
+    public String getProd_timestamp() {
+        return prod_timestamp;
+    }
+
+    public void setProd_timestamp(String prod_timestamp) {
+        this.prod_timestamp = prod_timestamp;
     }
 }

@@ -10,18 +10,18 @@ package erp_muzamia.dto;
  */
 public class Clientes {
     
-    private Integer clie_id;
+    private int clie_id;
     private String clie_nombres;
     private String clie_apellidos;
-    private Integer clie_dni;
-    private Boolean clie_estado;
+    private int clie_dni;
+    private boolean clie_estado;
     private String clie_timestamp;
 
-    public Integer getClie_id() {
+    public int getClie_id() {
         return clie_id;
     }
 
-    public void setClie_id(Integer clie_id) {
+    public void setClie_id(int clie_id) {
         this.clie_id = clie_id;
     }
 
@@ -41,19 +41,19 @@ public class Clientes {
         this.clie_apellidos = clie_apellidos;
     }
 
-    public Integer getClie_dni() {
+    public int getClie_dni() {
         return clie_dni;
     }
 
-    public void setClie_dni(Integer clie_dni) {
+    public void setClie_dni(int clie_dni) {
         this.clie_dni = clie_dni;
     }
 
-    public Boolean getClie_estado() {
+    public boolean isClie_estado() {
         return clie_estado;
     }
 
-    public void setClie_estado(Boolean clie_estado) {
+    public void setClie_estado(boolean clie_estado) {
         this.clie_estado = clie_estado;
     }
 

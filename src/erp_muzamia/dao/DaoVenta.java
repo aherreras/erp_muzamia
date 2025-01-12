@@ -4,7 +4,7 @@
  */
 package erp_muzamia.dao;
 
-import erp_muzamia.dto.DetOperacionVenta;
+import erp_muzamia.dto.DetOperacion;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ import java.util.List;
  * @author User
  */
 public interface DaoVenta {
-    
-    public List<DetOperacionVenta> getDetalle (int idOperacion);
-    
+
+    public List<DetOperacion> getDetalle(int idOperacion);
+
 }

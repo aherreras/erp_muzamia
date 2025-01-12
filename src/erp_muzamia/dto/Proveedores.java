@@ -9,7 +9,7 @@ package erp_muzamia.dto;
  * @author User
  */
 public class Proveedores {
-    private Integer prov_id;
+    private int prov_id;
     private String prov_razon_social;
     private String prov_ruc;
     private String prov_direccion;
@@ -18,11 +18,11 @@ public class Proveedores {
     private boolean prov_estado;
     private String prov_timestamp;
 
-    public Integer getProv_id() {
+    public int getProv_id() {
         return prov_id;
     }
 
-    public void setProv_id(Integer prov_id) {
+    public void setProv_id(int prov_id) {
         this.prov_id = prov_id;
     }
 

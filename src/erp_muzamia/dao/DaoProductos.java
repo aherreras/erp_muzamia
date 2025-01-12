@@ -12,11 +12,21 @@ import erp_muzamia.dto.Productos;
  * @author User
  */
 public interface DaoProductos {
+
+    public String ins_Productos(Productos productos);
+
+    public String upd_Productos(Productos productos);
     
-    public List<Productos> listarProductos(Integer categoria_id);
+    public List<Object[]> lst_Productos_1();
     
-    public Double obtenerPrecio(Integer id);
+    public List<Object[]> lst_Productos_1_1();
     
-    public List<Object[]> listaProductos();
+    public List<Productos> lst_Productos_2();
+        
+    public List<Productos> lst_Productos_2_1();
+    
+    public List<Productos> lst_Productos_x_Categoria_2(int id);
+    
+    public double fnd_Precio_x_Producto(int id);
     
 }

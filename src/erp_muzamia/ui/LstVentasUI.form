@@ -3,7 +3,7 @@
 <Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
-    <Property name="maximizable" type="boolean" value="true"/>
+    <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" value="VENTAS"/>
   </Properties>
   <SyntheticProperties>
@@ -30,7 +30,7 @@
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,6 +47,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="autoscrolls" type="boolean" value="true"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -56,26 +59,33 @@
         <Component class="javax.swing.JTable" name="jtVentas">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="17" rowCount="0">
-                <Column editable="false" title="ID Venta" type="java.lang.Object"/>
-                <Column editable="false" title="ID Oper." type="java.lang.Object"/>
+              <Table columnCount="23" rowCount="0">
+                <Column editable="false" title="ID" type="java.lang.Object"/>
+                <Column editable="false" title="tope_id" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Operaci&#xf3;n" type="java.lang.Object"/>
-                <Column editable="false" title="ID M&#xe9;t." type="java.lang.Object"/>
-                <Column editable="false" title="M&#xe9;todo de Pago" type="java.lang.Object"/>
-                <Column editable="false" title="ID Cli." type="java.lang.Object"/>
+                <Column editable="false" title="user_id" type="java.lang.Object"/>
+                <Column editable="false" title="Usuario" type="java.lang.Object"/>
+                <Column editable="false" title="tcom_id" type="java.lang.Object"/>
+                <Column editable="false" title="Tip. Compr." type="java.lang.Object"/>
+                <Column editable="false" title="Gen." type="java.lang.Boolean"/>
+                <Column editable="false" title="Impr." type="java.lang.Boolean"/>
+                <Column editable="false" title="fpag_id" type="java.lang.Object"/>
+                <Column editable="false" title="Forma de Pago" type="java.lang.Object"/>
+                <Column editable="false" title="peri_id" type="java.lang.Object"/>
+                <Column editable="false" title="Periodo" type="java.lang.Object"/>
+                <Column editable="false" title="clie_id" type="java.lang.Object"/>
                 <Column editable="false" title="Cliente" type="java.lang.Object"/>
-                <Column editable="false" title="ID Prov." type="java.lang.Object"/>
-                <Column editable="false" title="Proveedor" type="java.lang.Object"/>
-                <Column editable="false" title="&#xda;ltima mod." type="java.lang.Object"/>
                 <Column editable="false" title="Mnt. Oper." type="java.lang.Object"/>
-                <Column editable="false" title="Mnt. Cobr." type="java.lang.Object"/>
                 <Column editable="false" title="Mnt. Pag." type="java.lang.Object"/>
-                <Column editable="false" title="Mnt. Vto." type="java.lang.Object"/>
                 <Column editable="false" title="Saldo" type="java.lang.Object"/>
                 <Column editable="false" title="Fecha Oper." type="java.lang.Object"/>
+                <Column editable="false" title="esta_id" type="java.lang.Object"/>
+                <Column editable="false" title="Estado" type="java.lang.Object"/>
+                <Column editable="false" title="&#xda;ltima mod." type="java.lang.Object"/>
                 <Column editable="true" title="" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="autoResizeMode" type="int" value="0"/>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -163,7 +173,40 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
               </TableColumnModel>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="rowHeight" type="int" value="40"/>
             <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -194,7 +237,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel1" alignment="0" pref="117" max="32767" attributes="0"/>
                       <Component id="jLabel3" pref="117" max="32767" attributes="0"/>
@@ -206,7 +249,7 @@
                       <Component id="jcbTipoOperacion" alignment="0" pref="0" max="32767" attributes="0"/>
                       <Component id="jcbCaja" alignment="0" pref="165" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel14" alignment="0" pref="117" max="32767" attributes="0"/>
                       <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
@@ -218,7 +261,7 @@
                       <Component id="jtfRazSocProv" alignment="0" max="32767" attributes="0"/>
                       <Component id="jdcInicio" alignment="0" pref="165" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel9" max="32767" attributes="0"/>
                       <Component id="jLabel10" max="32767" attributes="0"/>
@@ -230,13 +273,11 @@
                       <Component id="jtfMenorQ" pref="165" max="32767" attributes="0"/>
                       <Component id="jdcFin" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Component id="jbFiltro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jbNuevaVenta" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jbRefresh" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -264,7 +305,6 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Component id="jbNuevaVenta" alignment="1" pref="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
@@ -378,25 +418,6 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jbNuevaVenta">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/erp_muzamia/ui/imgs/icons8-add-shopping-cart-48.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Nuevo"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNuevaVentaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
